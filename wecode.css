@@ -1,7 +1,6 @@
 .header {
     height: 80px;
     width: 100%;
-    display: flex;
     background-color: aqua;
 }
 #info-bar {
@@ -25,4 +24,14 @@
     font-size: 80px;
     vertical-align: middle;
     padding-right: 30px;
+}
+.home-page-buttons {
+    float: right;
+}
+.home-page-button-element {
+    float: left;
+    margin: 5px 15px 0px 15px;
+    padding: 25px 20px 20px 20px;
+    /* For Dev Purpose */
+    /* border: 2px solid red; */
 }
