@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
 }
 #home-page-header-content {
     float: left;
@@ -139,4 +140,32 @@
     .topnav input[type=text] {
       border: 1px solid #ccc;  
     }
+}
+.infobar-cp{
+  height: 288px;
+  width:1376px;
+  top: 80px;
+  margin-left:160px;
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+}
+.create-button{
+  margin-left: 650px;
+  margin-top: 130px;
+}
+.create-button-inner{
+  background-color: #111;
+  color: #ddd;
+  border-radius: 16px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-right: 5px;
+  padding-left: 5px;
+
+}
+.project-details{
+  top: 80px;
+  margin-left:160px;
+  background-color: aqua;
 }
