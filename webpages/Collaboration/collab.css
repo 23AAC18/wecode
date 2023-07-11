@@ -15,7 +15,8 @@ body {
     width: 100%;
     background-color: #2d2d2e;
     color: #ffffff;
-    position: fixed;
+    z-index: 1;
+    position: absolute;
 }
 #home-content {
     height: 100%;
@@ -25,4 +26,17 @@ body {
     margin: 10px 0px 0px 50px;
     font-family: "Dosis", sans-serif;
     font-size: 40px;
+}
+
+#collab-card-container {
+    padding-top: 100px;
+    margin: auto;
+    width: 80%;
+}
+
+.holding-img {
+    max-height: 10%;
+    max-width: 10%;
+    float: left;
+    padding-right: 20px;
 }
