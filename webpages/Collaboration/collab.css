@@ -15,14 +15,61 @@ body {
     width: 100%;
     background-color: #2d2d2e;
     color: #ffffff;
+    z-index: 1;
     position: fixed;
-}
-#home-content {
-    height: 100%;
 }
 
 #header-text {
     margin: 10px 0px 0px 50px;
     font-family: "Dosis", sans-serif;
     font-size: 40px;
+}
+
+#sidebar {
+    position: fixed;
+    height: 100%;
+    width: 15%;
+    float: left;
+    padding-top: 80px;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+#content {
+    padding-top: 100px;
+    margin-left: 15%;
+}
+
+#collab-card-container {
+    margin: auto;
+    width: 80%;
+}
+
+.holding-img {
+    max-height: 10%;
+    max-width: 10%;
+    float: left;
+    padding-right: 20px;
+}
+
+#text-spam {
+    padding-top: 50px;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+#collaborators-access-card {
+    margin-bottom: 80px;
+}
+
+#collaborators-view {
+    display: none;
+}
+
+.collaborator-card-container {
+    padding-bottom: 30px;
+}
+
+.card-body-text {
+    text-align: start;
 }

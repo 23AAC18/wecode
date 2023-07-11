@@ -12,6 +12,19 @@
             integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
             crossorigin="anonymous"
         />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"
+            integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
     </head>
     <body>
         <div class="header">
@@ -20,11 +33,93 @@
                 <div id="header-text">WeCode</div>
             </div>
         </div>
-        <div class="card w-80 mt-3">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Button</a>
+        <div id="sidebar">
+            <ul class="list-group">
+                <li
+                    class="list-group-item"
+                    style="background-color: rgba(0, 0, 0, 0)"
+                >
+                    Home
+                </li>
+                <li
+                    class="list-group-item"
+                    style="background-color: rgba(0, 0, 0, 0)"
+                >
+                    Search
+                </li>
+                <li
+                    class="list-group-item"
+                    style="background-color: rgba(0, 0, 0, 0)"
+                >
+                    New Project
+                </li>
+                <li
+                    class="list-group-item"
+                    style="background-color: rgba(0, 0, 0, 0)"
+                >
+                    Current Projects
+                </li>
+            </ul>
+        </div>
+        <div id="content">
+            <div id="collab-card-container">
+                <div class="card">
+                    <div class="card-body">
+                        <img
+                            src="/Assets/images/demo.png"
+                            alt=""
+                            class="holding-img"
+                        />
+                        <h5 class="card-title">Collaboration</h5>
+                        <p class="card-text">
+                            Collaboration with team members is made easier
+                            through real-time updates, and chat function
+                        </p>
+                    </div>
+                </div>
             </div>
+            <div id="text-spam">
+                <div id="collaborators-access-card">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Project View</h5>
+                            <p class="card-text">
+                                Click the button below to view all the coders
+                                working on the project
+                            </p>
+                            <a
+                                href="#"
+                                class="btn btn-secondary"
+                                onclick="displayCollaborators();"
+                                >View Collaborators</a
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div id="collaborators-view">
+                    <h2>PROJECT MEMBERS</h2>
+                    <h5 style="padding-bottom: 30px">
+                        Here are all the active coders working on this sproject
+                    </h5>
+                    <div class="collaborator-card-container">
+                        <div class="card">
+                            <div class="card-body">
+                                <img
+                                    src="/Assets/images/demo.png"
+                                    alt=""
+                                    class="holding-img"
+                                />
+                                <div class="card-body-text">
+                                    <h5 class="card-title">User1</h5>
+                                    <p class="card-text">
+                                        Click here to Access
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
