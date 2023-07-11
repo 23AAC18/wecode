@@ -16,7 +16,7 @@ body {
     background-color: #2d2d2e;
     color: #ffffff;
     z-index: 1;
-    position: absolute;
+    position: fixed;
 }
 #home-content {
     height: 100%;
@@ -30,8 +30,9 @@ body {
 
 #collab-card-container {
     padding-top: 100px;
+    padding-left: 15%;
     margin: auto;
-    width: 70%;
+    width: 80%;
 }
 
 .holding-img {
@@ -42,5 +43,10 @@ body {
 }
 
 #sidebar {
-    padding-top: 100px;
+    position: fixed;
+    height: 100%;
+    width: 15%;
+    float: left;
+    padding-top: 80px;
+    background-color: rgba(0, 0, 0, 0.05);
 }
