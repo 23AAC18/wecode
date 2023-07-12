@@ -1,0 +1,17 @@
+.header-curentprojects{
+    width:100%;
+    height:auto;
+background-color: aqua;
+position: fixed;
+align-items: centre;
+font-size: large;
+}
+.search-bar{
+    width: 40px;
+    display: flex;
+    align-items: centre;
+    margin-left: auto;
+    margin-right: 10%;
+    padding-right: 5%;
+    justify-content: space-between;    
+}
