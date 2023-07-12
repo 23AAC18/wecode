@@ -73,3 +73,7 @@ body {
 .card-body-text {
     text-align: start;
 }
+
+#collaborators-access-card {
+    display: block;
+}

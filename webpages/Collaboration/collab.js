@@ -3,6 +3,7 @@ let i;
 const collaboratorsCards = document.querySelector("#collaborators-cards");
 const displayCollaborators = function () {
     document.querySelector("#collaborators-view").style.display = "block";
+    document.querySelector("#collaborators-access-card").style.display = "none";
     console.log("AAA");
 };
 
