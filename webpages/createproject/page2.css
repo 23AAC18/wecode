@@ -94,8 +94,9 @@
   
 
   .main {
-    margin-left: 160px; 
-    padding: 0px 10px;
+  width:1376px;
+  top: 80px;
+  margin-left:160px;
   }
   
 
@@ -144,15 +145,13 @@
 .infobar-cp{
   height: 288px;
   width:1376px;
-  top: 80px;
-  margin-left:160px;
   background-color: aqua;
   display: flex;
   align-items: center;
 }
 .create-button{
-  margin-left: 650px;
-  margin-top: 130px;
+  margin-left: 600px;
+  margin-top: 160px;
 }
 .create-button-inner{
   background-color: #111;
@@ -165,7 +164,106 @@
 
 }
 .project-details{
-  top: 80px;
-  margin-left:160px;
+
+  background-color: rgb(255, 0, 0);
+  height: 500px;
+  justify-content: center;
+}
+.project-name{
+  font-size: 38px;
+  font-style: bold;
+  margin: 0;
+  padding-top: 60px;
+}
+.center-info{
+background-color: aquamarine;
+height:100px;
+text-align: center;
+}
+.details-text{
+  font-size: 18px;
+  font-family:bold;
+  padding-top: 15px;
+}
+.project-name-input{
+  font-size: 18px;
+  font-family:bold;
+  padding-top: 15px;
+  padding-right: 40px;
+
+}
+.project-creating-details{
+  height: 400px;
   background-color: aqua;
+}
+.input-group {
+  margin-bottom: 10px;
+}
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+.input-group input, .input-group textarea {
+  width: 300px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.input-group{
+  padding-top: 80px;
+  padding-left: 380px;
+}
+.input-group-1 {
+  margin-bottom: 10px;
+}
+.input-group-1 label {
+  display: block;
+  margin-bottom: 5px;
+}
+.input-group-1 input, .input-group-1 textarea {
+  width: 300px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.input-group-1{
+  padding-left: 380px;
+  padding-top: 20px ;
+}
+.create-button-2{
+  margin-left: 600px;
+  margin-top: 160px;
+}
+.create-button-inner-2{
+ 
+    background-color: #111;
+    color: #ddd;
+    border-radius: 8px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-right: 50px;
+    padding-left: 50px;
+    border: solid;
+    margin-top: 20px;
+  
+}
+.clear-button{
+  background-color:white;
+  color: #000000;
+  border-radius: 8px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-right: 50px;
+  padding-left: 50px;
+  border: solid;
+}
+.search-bar{
+  width: 300px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color:#000000;
+}
+.profile{
+  display: flex;
 }
