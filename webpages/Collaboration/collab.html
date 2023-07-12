@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>wecode.collaboration()</title>
         <link rel="stylesheet" href="collab.css" />
-        <script src="collab.js"></script>
+        <script defer src="collab.js"></script>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -101,22 +101,8 @@
                     <h5 style="padding-bottom: 30px">
                         Here are all the active coders working on this sproject
                     </h5>
-                    <div class="collaborator-card-container">
-                        <div class="card">
-                            <div class="card-body">
-                                <img
-                                    src="/Assets/images/demo.png"
-                                    alt=""
-                                    class="holding-img"
-                                />
-                                <div class="card-body-text">
-                                    <h5 class="card-title">User1</h5>
-                                    <p class="card-text">
-                                        Click here to Access
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="collaborators-cards">
+                        <!-- Collaborator Cards from JS inject here -->
                     </div>
                 </div>
             </div>
