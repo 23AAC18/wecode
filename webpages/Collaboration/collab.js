@@ -10,10 +10,6 @@ const displayCollaborators = function () {
 const collaborators = ["A", "B", "C"];
 
 for (i of collaborators) {
-    console.log(i);
-}
-
-for (i of collaborators) {
     collaboratorsCards.insertAdjacentHTML(
         "beforeEnd",
         `<div class="collaborator-card-container">
