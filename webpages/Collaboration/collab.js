@@ -25,10 +25,10 @@ for (i of collaborators) {
                         class="holding-img"
                     />
                     <div class="card-body-text">
-                        <h5 class="card-title">${i}</h5>
-                        <p class="card-text">
+                        <h5 class="card-title" style="font-weight: 700; padding-bottom: 20px;">${i}</h5>
+                            <sub class="card-text" style="font-weight: 700">
                             Click here to Access
-                        </p>
+                        </sub>
                     </div>
                 </div>
             </div>
