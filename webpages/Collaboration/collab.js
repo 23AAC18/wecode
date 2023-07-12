@@ -7,7 +7,7 @@ const displayCollaborators = function () {
     console.log("AAA");
 };
 
-const collaborators = ["A", "B", "C"];
+const collaborators = ["A", "B", "C", "D", "E", "F", "G"];
 
 for (i of collaborators) {
     collaboratorsCards.insertAdjacentHTML(
