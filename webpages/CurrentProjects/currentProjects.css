@@ -23,3 +23,14 @@
     padding-top: 80px;
     background-color: rgba(0, 0, 0, 0.05);
 }
+
+#content {
+    padding-top: 80px;
+    padding-left: 15%;
+    width: 100%;
+}
+
+#primary-title {
+    text-align: center;
+    padding-bottom: 30px;
+}
