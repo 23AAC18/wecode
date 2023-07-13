@@ -1,117 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Belanosima&family=Dosis&display=swap");
+
 .header {
     height: 80px;
     width: 100%;
     background-color: #2d2d2e;
     color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    z-index: 1;
     position: fixed;
 }
-#home-page-header-content {
-    float: left;
-    height: 100%;
-}
 
-#header-app-name {
+#header-text {
     margin: 10px 0px 0px 50px;
     font-family: "Dosis", sans-serif;
     font-size: 40px;
 }
 
-.home-page-buttons {
-    float: right;
-}
-.home-page-button-element {
-    align-items: center;
-    background-color: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 0.25rem;
-    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-    box-sizing: border-box;
-    color: rgba(0, 0, 0, 0.85);
-    cursor: pointer;
-    display: inline-flex;
-    font-family: system-ui, -apple-system, system-ui, "Helvetica Neue",
-        Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    justify-content: center;
-    line-height: 1.25;
-    margin: 20px 10px 0px 0px;
-    min-height: 3rem;
-    padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
-    position: relative;
-    text-decoration: none;
-    transition: all 250ms;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    width: 100px;
-}
-.home-page-button-element:hover,
-.home-page-button-element:focus {
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-    color: rgba(0, 0, 0, 0.65);
+#sidebar {
+    position: fixed;
+    height: 100%;
+    width: 15%;
+    float: left;
+    padding-top: 80px;
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
-.home-page-button-element:hover {
-    transform: translateY(-1px);
+.main {
+    width: 1376px;
+    top: 80px;
+    margin-left: 160px;
 }
 
-.home-page-button-element:active {
-    background-color: #f0f0f1;
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-    color: rgba(0, 0, 0, 0.65);
-    transform: translateY(0);
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
 }
-.sidenav {
-    height: 100%; 
-    width: 160px; 
-    position: fixed; 
-    z-index: 1; 
-    top: 80px; 
-    left: 0;
-    background-color: #111; 
-    overflow-x: hidden; 
-    padding-top: 20px;
-  }
-
-  .sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-  }
-  
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
-  
-
-  .main {
-  width:1376px;
-  top: 80px;
-  margin-left:160px;
-  }
-  
-
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-  }
-  .topnav input[type=text] {
+.topnav input[type="text"] {
     padding: 6px;
     margin-top: 8px;
     font-size: 17px;
     border: none;
-  }
-  
-  .topnav .search-container button {
+}
+
+.topnav .search-container button {
     float: right;
     padding: 6px 10px;
     margin-top: 8px;
@@ -120,118 +54,118 @@
     font-size: 17px;
     border: none;
     cursor: pointer;
-  }
-  
+}
+
 .topnav .search-container button:hover {
     background: #ccc;
-  }
-  
-  @media screen and (max-width: 600px) {
+}
+
+@media screen and (max-width: 600px) {
     .topnav .search-container {
-      float: none;
+        float: none;
     }
-    .topnav a, .topnav input[type=text], .topnav .search-container button {
-      float: none;
-      display: block;
-      text-align: left;
-      width: 100%;
-      margin: 0;
-      padding: 14px;
+    .topnav a,
+    .topnav input[type="text"],
+    .topnav .search-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
     }
-    .topnav input[type=text] {
-      border: 1px solid #ccc;  
+    .topnav input[type="text"] {
+        border: 1px solid #ccc;
     }
 }
-.infobar-cp{
-  height: 288px;
-  width:1376px;
-  display: flex;
-  align-items: center;
+.infobar-cp {
+    height: 288px;
+    width: 1376px;
+    display: flex;
+    align-items: center;
 }
-.create-button{
-  margin-left: 600px;
-  margin-top: 160px;
+.create-button {
+    margin-left: 600px;
+    margin-top: 160px;
 }
-.create-button-inner{
-  background-color: #111;
-  color: #ddd;
-  border-radius: 16px;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  padding-right: 5px;
-  padding-left: 5px;
-
+.create-button-inner {
+    background-color: #111;
+    color: #ddd;
+    border-radius: 16px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
 }
-.project-details{
-  height: 500px;
-  justify-content: center;
+.project-details {
+    height: 500px;
+    justify-content: center;
 }
-.project-name{
-  font-size: 38px;
-  font-style: bold;
-  margin: 0;
-  padding-top: 60px;
+.project-name {
+    font-size: 38px;
+    font-style: bold;
+    margin: 0;
+    padding-top: 60px;
 }
-.center-info{
-
-height:100px;
-text-align: center;
+.center-info {
+    height: 100px;
+    text-align: center;
 }
-.details-text{
-  font-size: 18px;
-  font-family:bold;
-  padding-top: 15px;
+.details-text {
+    font-size: 18px;
+    font-family: bold;
+    padding-top: 15px;
 }
-.project-name-input{
-  font-size: 18px;
-  font-family:bold;
-  padding-top: 15px;
-  padding-right: 40px;
-
+.project-name-input {
+    font-size: 18px;
+    font-family: bold;
+    padding-top: 15px;
+    padding-right: 40px;
 }
-.project-creating-details{
-  height: 400px;
+.project-creating-details {
+    height: 400px;
 }
 .input-group {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .input-group label {
-  display: block;
-  margin-bottom: 5px;
+    display: block;
+    margin-bottom: 5px;
 }
-.input-group input, .input-group textarea {
-  width: 300px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.input-group input,
+.input-group textarea {
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
-.input-group{
-  padding-top: 80px;
-  padding-left: 380px;
+.input-group {
+    padding-top: 80px;
+    padding-left: 380px;
 }
 .input-group-1 {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .input-group-1 label {
-  display: block;
-  margin-bottom: 5px;
+    display: block;
+    margin-bottom: 5px;
 }
-.input-group-1 input, .input-group-1 textarea {
-  width: 300px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.input-group-1 input,
+.input-group-1 textarea {
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
-.input-group-1{
-  padding-left: 380px;
-  padding-top: 20px ;
+.input-group-1 {
+    padding-left: 380px;
+    padding-top: 20px;
 }
-.create-button-2{
-  margin-left: 600px;
-  margin-top: 160px;
+.create-button-2 {
+    margin-left: 600px;
+    margin-top: 160px;
 }
-.create-button-inner-2{
- 
+.create-button-inner-2 {
     background-color: #111;
     color: #ddd;
     border-radius: 8px;
@@ -241,25 +175,24 @@ text-align: center;
     padding-left: 50px;
     border: solid;
     margin-top: 20px;
-  
 }
-.clear-button{
-  background-color:white;
-  color: #000000;
-  border-radius: 8px;
-  padding-bottom: 15px;
-  padding-top: 15px;
-  padding-right: 50px;
-  padding-left: 50px;
-  border: solid;
+.clear-button {
+    background-color: white;
+    color: #000000;
+    border-radius: 8px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-right: 50px;
+    padding-left: 50px;
+    border: solid;
 }
-.search-bar{
-  width: 300px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color:#000000;
+.search-bar {
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #000000;
 }
-.profile{
-  display: flex;
+.profile {
+    display: flex;
 }
