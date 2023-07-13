@@ -145,7 +145,6 @@
 .infobar-cp{
   height: 288px;
   width:1376px;
-  background-color: aqua;
   display: flex;
   align-items: center;
 }
@@ -164,8 +163,6 @@
 
 }
 .project-details{
-
-  background-color: rgb(255, 0, 0);
   height: 500px;
   justify-content: center;
 }
@@ -176,7 +173,7 @@
   padding-top: 60px;
 }
 .center-info{
-background-color: aquamarine;
+
 height:100px;
 text-align: center;
 }
@@ -194,7 +191,6 @@ text-align: center;
 }
 .project-creating-details{
   height: 400px;
-  background-color: aqua;
 }
 .input-group {
   margin-bottom: 10px;
