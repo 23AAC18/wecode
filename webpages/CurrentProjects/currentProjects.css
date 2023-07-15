@@ -35,9 +35,29 @@
     padding-bottom: 30px;
 }
 
+#projects-container {
+    padding-left: 60px;
+    padding-right: 60px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 40px;
+    row-gap: 40px;
+}
+.project-element {
+    border-style: dashed;
+}
 #community-container {
-    padding-left: 50px;
+    padding-left: 76px;
     padding-bottom: 50px;
+}
+
+#community-cards {
+    max-width: 100%;
+}
+
+.row-no-padding {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
 
 .community-image {
