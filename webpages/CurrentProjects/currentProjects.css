@@ -41,9 +41,9 @@
 }
 
 .community-image {
-    max-width: 150px;
-    max-height: 150px;
-    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
