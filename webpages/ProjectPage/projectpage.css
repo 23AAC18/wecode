@@ -44,3 +44,7 @@ body {
     margin: auto;
     padding: 20px 0px 0px 0px;
 }
+
+#content-contents * {
+    padding-bottom: 30px;
+}
