@@ -26,6 +26,7 @@
 .search-group {
     margin-top: 15px;
 }
+
 .search-group label {
     display: block;
     margin-bottom: 5px;
@@ -36,6 +37,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
 
 #content {
     padding-top: 80px;
@@ -48,6 +50,7 @@
     border: 1px solid #ccc;
     padding: 10px;
     display: flex;
+
 }
 
 .button {
