@@ -33,7 +33,13 @@
                 <div id="header-text">WeCode</div>
             </div>
             <div class="search-group">
-                <input type="text" id="project-name-input" name="project-name-input" placeholder="search here" required>
+                <input
+                    type="text"
+                    id="project-name-input"
+                    name="project-name-input"
+                    placeholder="search here"
+                    required
+                />
             </div>
         </div>
         <div id="sidebar">
@@ -64,34 +70,36 @@
                 </li>
             </ul>
         </div>
-        <div class="button-container">
-            <button class="button" onclick="saveFunction()">Save</button>
-            <button class="button" onclick="runFunction()">Run</button>
-            <button class="button" onclick="debugFunction()">Debug</button>
-            <button class="button" onclick="stopFunction()">Stop</button>
-            <button class="button" onclick="shareFunction()">Share</button>
+        <div id="content">
+            <div class="button-container">
+                <button class="button" onclick="saveFunction()">Save</button>
+                <button class="button" onclick="runFunction()">Run</button>
+                <button class="button" onclick="debugFunction()">Debug</button>
+                <button class="button" onclick="stopFunction()">Stop</button>
+                <button class="button" onclick="shareFunction()">Share</button>
+            </div>
         </div>
-          <script>
-            function saveFunction() {
-              alert('Saving data...');
-            }
-        
-            function runFunction() {
-              alert('Running...');
-            }
-        
-            function debugFunction() {
-              alert('Debugging...');
-            }
-        
-            function stopFunction() {
-              alert('Stopping...');
-            }
-        
-            function shareFunction() {
 
-              alert('Sharing...');
+        <!-- <script>
+            function saveFunction() {
+                alert("Saving data...");
             }
-          </script>
+
+            function runFunction() {
+                alert("Running...");
+            }
+
+            function debugFunction() {
+                alert("Debugging...");
+            }
+
+            function stopFunction() {
+                alert("Stopping...");
+            }
+
+            function shareFunction() {
+                alert("Sharing...");
+            }
+        </script> -->
     </body>
 </html>

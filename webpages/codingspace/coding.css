@@ -24,8 +24,9 @@
     background-color: rgba(0, 0, 0, 0.05);
 }
 .search-group {
-margin-top: 15px;
+    margin-top: 15px;
 }
+
 .search-group label {
     display: block;
     margin-bottom: 5px;
@@ -36,21 +37,30 @@ margin-top: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+
+#content {
+    padding-top: 80px;
+    padding-left: 15%;
+    width: 80%;
+    margin: auto;
+}
+
 .button-container {
     border: 1px solid #ccc;
     padding: 10px;
     display: flex;
-    width: 1376px;
-    margin-left: 160px;
-  }
-  .button {
+
+}
+
+.button {
     padding: 8px 16px;
-    background-color: #4CAF50;
+    background-color: #4caf50;
     color: white;
     border: none;
     cursor: pointer;
-  }
+}
 
-  .button:hover {
+.button:hover {
     background-color: #45a049;
-  }
+}
