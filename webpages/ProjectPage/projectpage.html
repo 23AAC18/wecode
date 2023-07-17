@@ -25,6 +25,10 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+        />
     </head>
     <body>
         <div class="header">
@@ -94,26 +98,71 @@
         <div id="content">
             <div id="content-contents">
                 <div id="folders-container">
-                    <p style="font-weight: 500; font-size: 18px">FOLDERS</p>
+                    <p>FOLDERS</p>
                     <div id="folders"></div>
                 </div>
                 <div id="active-coders-container">
-                    <p style="font-weight: 500; font-size: 18px">
-                        ACTIVE CODERS
-                    </p>
-                    <div id="active-coders"></div>
+                    <p>ACTIVE CODERS</p>
+                    <div id="active-coders">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <i class="bi bi-person"></i>
+                                An item
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-person"></i>
+                                A second item
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-person"></i>
+                                A third item
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div id="coding-space">
-                    <p style="font-weight: 500; font-size: 18px">
-                        CODING SPACE
-                    </p>
+                    <p>CODING SPACE</p>
                 </div>
                 <div id="changelog-container">
-                    <p style="font-weight: 500; font-size: 18px">CHANGELOG</p>
-                    <div id="changelog"></div>
+                    <p>CHANGELOG</p>
+                    <div id="changelog">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <i
+                                    class="bi bi-card-text"
+                                    style="float: left; padding-right: 10px"
+                                ></i>
+                                <p style="margin-bottom: 0px">One</p>
+                                <sub style="float: inline-start"
+                                    >Author: Doe</sub
+                                >
+                            </li>
+
+                            <li class="list-group-item">
+                                <i
+                                    class="bi bi-card-text"
+                                    style="float: left; padding-right: 10px"
+                                ></i>
+                                <p style="margin-bottom: 0px">Two</p>
+                                <sub style="float: inline-start"
+                                    >Author: Doe</sub
+                                >
+                            </li>
+                            <li class="list-group-item">
+                                <i
+                                    class="bi bi-card-text"
+                                    style="float: left; padding-right: 10px"
+                                ></i>
+                                <p style="margin-bottom: 0px">Three</p>
+                                <sub style="float: inline-start"
+                                    >Author: Doe</sub
+                                >
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <div id="permissions-container">
-                    <p style="font-weight: 500; font-size: 18px">PERMISSIONS</p>
+                    <p>PERMISSIONS</p>
                     <div id="permissions"></div>
                 </div>
                 <div id="stats-container">

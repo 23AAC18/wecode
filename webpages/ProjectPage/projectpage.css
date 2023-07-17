@@ -45,6 +45,16 @@ body {
     padding: 20px 0px 0px 0px;
 }
 
-#content-contents * {
+#content-contents > * {
     padding-bottom: 30px;
+}
+
+#content-contents > div > p {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+#active-coders {
+    width: 100%;
+    margin: auto;
 }
