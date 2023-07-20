@@ -39,7 +39,7 @@
 }
 
 
-#content {
+.content {
     padding-top: 80px;
     padding-left: 15%;
     width: 80%;
@@ -50,6 +50,9 @@
     border: 1px solid #ccc;
     padding: 10px;
     display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background-color: aquamarine;
 
 }
 
