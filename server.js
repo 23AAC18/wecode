@@ -29,3 +29,9 @@ db.connect((err) => {
         console.log("Connected to MySQL database");
     }
 });
+
+//Insert Records
+
+//Search Records
+
+//Delete Records

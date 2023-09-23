@@ -91,3 +91,7 @@
     vertical-align: middle;
     padding-right: 30px;
 }
+
+.input-field {
+    background-color: gray;
+}
