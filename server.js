@@ -33,10 +33,9 @@ db.connect((err) => {
     }
 });
 
-//Insert Records
+//Register User
 app.post("/register", (req, res) => {
     const { username, password } = req.body;
-
     const sql = "INSERT INTO authdetails (username, password) VALUES (?, ?)";
     db.query(sql, [username, password], (err, results) => {
         if (err) {
@@ -48,12 +47,10 @@ app.post("/register", (req, res) => {
     });
 });
 
-//Log Into Records
+//Log Into User Account
 app.get("/login", (req, res) => {
-    const { username, password } = req.query; // Get the username and password from the query parameters
-
-    // SQL query to search for a user with the provided username and password
-    const sql = "SELECT * FROM authdetails WHERE username = ? AND password = ?"; // Use the correct field names
+    const { username, password } = req.query;
+    const sql = "SELECT * FROM authdetails WHERE username = ? AND password = ?";
     db.query(sql, [username, password], (err, results) => {
         console.log(results);
         if (err) {
@@ -61,13 +58,12 @@ app.get("/login", (req, res) => {
             res.status(500).json({ error: "Database error" });
         } else {
             if (results.length > 0) {
-                // User with the provided username and password exists
                 res.json({ message: "Login successful" });
             } else {
-                // User does not exist or invalid login credentials
                 res.json({ message: "Invalid username or password" });
             }
         }
     });
 });
-//Delete Records
+
+//Delete User Account
