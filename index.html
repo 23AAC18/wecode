@@ -4,8 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>WeCode</title>
-        <script defer src="script.js"></script>
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="/style.css" />
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
@@ -49,6 +48,46 @@
                     <span> Log In </span>
                 </button>
             </div>
+        </div>
+        <div id="input-box">
+            <form id="registration-field" class="input-field">
+                <label>Username : </label>
+                <input
+                    type="text"
+                    placeholder="Enter Username"
+                    id="registration-username"
+                    name="username"
+                    required
+                />
+                <label>Password : </label>
+                <input
+                    type="password"
+                    placeholder="Enter Password"
+                    id="registration-password"
+                    name="password"
+                    required
+                />
+                <button type="submit">Register</button>
+            </form>
+            <form id="login-field" class="input-field">
+                <label>Username : </label>
+                <input
+                    type="text"
+                    placeholder="Enter Username"
+                    id="login-username"
+                    name="username"
+                    required
+                />
+                <label>Password : </label>
+                <input
+                    type="password"
+                    placeholder="Enter Password"
+                    id="login-password"
+                    name="password"
+                    required
+                />
+                <button type="submit">Login</button>
+            </form>
         </div>
         <div id="info-bar">information</div>
         <div id="authorization-content">
@@ -110,5 +149,6 @@
                 </ul>
             </div>
         </div>
+        <script defer src="/script.js"></script>
     </body>
 </html>

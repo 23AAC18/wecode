@@ -92,6 +92,7 @@
     padding-right: 30px;
 }
 
+
 .auth-fields {
     display: block;
     width: 50%;
@@ -106,4 +107,8 @@
 
 .auth-button {
     width: 100%;
+
+.input-field {
+    background-color: gray;
+
 }
