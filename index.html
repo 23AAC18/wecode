@@ -50,11 +50,12 @@
             </div>
         </div>
         <div id="input-box">
-            <div id="registration-field" class="input-field">
+            <form id="registration-field" class="input-field">
                 <label>Username : </label>
                 <input
                     type="text"
                     placeholder="Enter Username"
+                    id="registration-username"
                     name="username"
                     required
                 />
@@ -62,16 +63,18 @@
                 <input
                     type="password"
                     placeholder="Enter Password"
+                    id="registration-password"
                     name="password"
                     required
                 />
                 <button type="submit">Register</button>
-            </div>
-            <div id="login-field" class="input-field">
+            </form>
+            <form id="login-field" class="input-field">
                 <label>Username : </label>
                 <input
                     type="text"
                     placeholder="Enter Username"
+                    id="login-username"
                     name="username"
                     required
                 />
@@ -79,11 +82,12 @@
                 <input
                     type="password"
                     placeholder="Enter Password"
+                    id="login-password"
                     name="password"
                     required
                 />
                 <button type="submit">Login</button>
-            </div>
+            </form>
         </div>
         <div id="info-bar">information</div>
         <div class="about-us">
