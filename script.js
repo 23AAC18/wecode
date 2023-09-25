@@ -45,12 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((response) => response.json())
             .then((data) => {
                 if (data.message === "Login successful") {
-                    // Successful login, handle it (e.g., redirect to a dashboard)
                     alert("Login successful");
                 } else {
-                    // Invalid login credentials
                     alert("Invalid username or password");
                 }
+                document.getElementById("login-username").value = "";
+                document.getElementById("login-password").value = "";
             })
             .catch((error) => {
                 console.error("Error:", error);
