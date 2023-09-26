@@ -6,11 +6,16 @@ const port = 3000;
 
 // Serve static files from the root directory
 app.use(express.static(__dirname));
+app.use(express.static(__dirname + "/webpages/CurrentProjects"));
+
 //Utilizing bodyParser
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
+});
+app.get("/home", (req, res) => {
+    res.sendFile(__dirname + "/webpages/CurrentProjects/currentProjects.html");
 });
 
 app.listen(port, () => {
@@ -58,12 +63,10 @@ app.get("/login", (req, res) => {
             res.status(500).json({ error: "Database error" });
         } else {
             if (results.length > 0) {
-                res.json({ message: "Login successful" });
+                res.redirect("/home");
             } else {
                 res.json({ message: "Invalid username or password" });
             }
         }
     });
 });
-
-//Delete User Account
