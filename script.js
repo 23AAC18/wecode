@@ -46,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((data) => {
                 if (data.message === "Login successful") {
                     alert("Login successful");
+                    // redirect to the url if success
+                    window.location.replace(data.url);
                 } else {
                     alert("Invalid username or password");
                 }

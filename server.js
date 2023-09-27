@@ -63,7 +63,10 @@ app.get("/login", (req, res) => {
             res.status(500).json({ error: "Database error" });
         } else {
             if (results.length > 0) {
-                res.redirect("/home");
+                res.json({
+                    message: "Login successful",
+                    url: "/home",
+                });
             } else {
                 res.json({ message: "Invalid username or password" });
             }
