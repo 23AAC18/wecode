@@ -7,6 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 const port = 3000;
+const fs = require("fs");
 
 // Serve static files from the root directory
 app.use(express.static(__dirname));
@@ -26,9 +27,9 @@ app.get("/", (req, res) => {
 app.get("/home", (req, res) => {
     res.sendFile(__dirname + "/webpages/CurrentProjects/currentProjects.html");
 });
-app.get("/code", (req, res) => {
-    res.sendFile(__dirname + "/webpages/codingspace/coding.html");
-});
+// app.get("/code", (req, res) => {
+//     res.sendFile(__dirname + "/webpages/codingspace/coding.html");
+// });
 
 server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
@@ -86,17 +87,31 @@ app.get("/login", (req, res) => {
     });
 });
 
+app.get("/:roomName", (req, res) => {
+    const roomName = req.params.roomName;
+    const filePath = __dirname + `/webpages/codingspace/coding.html`;
+
+    fs.readFile(filePath, "utf8", (err, data) => {
+        if (err) {
+            console.error("Error reading HTML file:", err);
+            return res.status(500).send("Internal Server Error");
+        }
+        res.send(data);
+    });
+});
+
 // WebSocket handling
 io.on("connection", (socket) => {
-    console.log("A user connected");
-
-    // Listen for changes from clients
-    socket.on("codeChange", (newCode) => {
-        // Broadcast the new code to all connected clients, including the sender
-        io.emit("codeChange", newCode);
+    socket.on("joinRoom", (roomName) => {
+        socket.join(roomName);
+        console.log(`User joined room: ${roomName}`);
     });
 
-    // Handle disconnection
+    socket.on("codeChange", (data) => {
+        const { roomName, newCode } = data;
+        io.to(roomName).emit("codeChange", newCode);
+    });
+
     socket.on("disconnect", () => {
         console.log("A user disconnected");
     });

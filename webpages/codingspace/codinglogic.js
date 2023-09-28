@@ -2,15 +2,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const socket = io();
 
     const codingSpace = document.getElementById("codingSpace");
+    const roomName = window.location.pathname.slice(1); // Extract room name from the URL
 
-    // Listen for code changes from the server and update the text area
+    socket.emit("joinRoom", roomName);
+
     socket.on("codeChange", (newCode) => {
         codingSpace.value = newCode;
     });
 
-    // Listen for user input and send code changes to the server
     codingSpace.addEventListener("input", () => {
         const newCode = codingSpace.value;
-        socket.emit("codeChange", newCode);
+        socket.emit("codeChange", { roomName, newCode });
     });
 });
