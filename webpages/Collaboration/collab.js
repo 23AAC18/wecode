@@ -1,4 +1,3 @@
-"use strict";
 let i;
 const collaboratorsCards = document.querySelector("#collaborators-cards");
 const displayCollaborators = function () {
