@@ -25,7 +25,11 @@
             referrerpolicy="no-referrer"
         />
         <script src="/node_modules/socket.io/client-dist/socket.io.js"></script>
-        <script defer src="/webpages/codingspace/codinglogic.js"></script>
+        <script
+            defer
+            type="module"
+            src="/webpages/codingspace/codinglogic.js"
+        ></script>
     </head>
     <body>
         <div class="header">
@@ -81,5 +85,6 @@
             </div>
             <textarea id="codingSpace" rows="4" cols="50"></textarea>
         </div>
+        <script type="module" src="/webpages/codingspace/firebase.js"></script>
     </body>
 </html>
