@@ -78,9 +78,6 @@
     object-fit: fill;
 }
 
-
-
-
 .search-container {
     text-align: center;
     margin-top: 50px;
@@ -97,7 +94,7 @@
 
 #search-button {
     padding: 10px 20px;
-    background-color:black;
+    background-color: black;
     color: white;
     border: none;
     border-radius: 5px;
@@ -106,5 +103,11 @@
 }
 
 #search-button:hover {
-    background-color:#0056b3;
+    background-color: #0056b3;
+}
+
+.sidebar-button {
+    height: 100%;
+    width: 100%;
+    border: none;
 }

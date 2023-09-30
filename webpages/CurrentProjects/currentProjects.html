@@ -39,61 +39,13 @@
                     class="list-group-item"
                     style="background-color: rgba(0, 0, 0, 0)"
                 >
-                    Home
+                    <button class="sidebar-button">Home</button>
                 </li>
                 <li
                     class="list-group-item"
                     style="background-color: rgba(0, 0, 0, 0)"
                 >
-                    Search
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    New Project
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    Folders
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    Active Coders
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    Coding Space
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    Change Log
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    Permissions
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    Statistics
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    Current Projects
+                    <button class="sidebar-button">Create Project</button>
                 </li>
             </ul>
         </div>
@@ -102,14 +54,14 @@
                 <h2 style="padding-top: 30px">Current Projects</h2>
                 <p>View and manage your ongoing programming projects</p>
 
-
                 <div class="search-container">
-                    <input type="text" id="search-input" placeholder="Search Projects">
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Search Projects"
+                    />
                     <button id="search-button">Search</button>
                 </div>
-
-
-
             </div>
 
             <div id="projects-container" style="padding-bottom: 50px">
@@ -118,13 +70,13 @@
                     <div class="card mb-3" style="max-width: 540px">
                         <div class="row no-gutters">
                             <div class="col-md-4">
-                                <a href="#" onclick="buttonClicked()"> 
-                                  <img
-                                    src="/Assets/images/demo-landscape.jpg"
-                                    class="card-img holding-image"
-                                    alt="..."
-                                  />
-                                 </a>
+                                <a href="#" onclick="buttonClicked()">
+                                    <img
+                                        src="/Assets/images/demo-landscape.jpg"
+                                        class="card-img holding-image"
+                                        alt="..."
+                                    />
+                                </a>
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
@@ -141,12 +93,12 @@
                         <div class="row no-gutters">
                             <div class="col-md-4">
                                 <a href="#" onclick="button2Clicked()">
-                                 <img
-                                    src="/Assets/images/demo-portrait.jpg"
-                                    class="card-img holding-image"
-                                    alt="..."
-                                 />
-                                 </a>
+                                    <img
+                                        src="/Assets/images/demo-portrait.jpg"
+                                        class="card-img holding-image"
+                                        alt="..."
+                                    />
+                                </a>
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
@@ -157,7 +109,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <!--
                 <div class="project-element">
@@ -179,7 +130,7 @@
                         </div>
                     </div>
                 </div> -->
-                
+
                 <!--
                 <div class="project-element">
                     <div class="card mb-3" style="max-width: 540px">
@@ -201,7 +152,7 @@
                     </div>
                 </div> -->
 
-                  <!-- <div class="project-element">
+                <!-- <div class="project-element">
                     <div class="card mb-3" style="max-width: 540px">
                         <div class="row no-gutters">
                             <div class="col-md-4">
@@ -220,7 +171,6 @@
                         </div>
                     </div>
                     </div> -->
-            
             </div>
             <div id="community-container">
                 <h5 style="padding-bottom: 30px">Community</h5>
