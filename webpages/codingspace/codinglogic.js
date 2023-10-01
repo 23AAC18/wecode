@@ -8,8 +8,8 @@ import {
     update,
     remove,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
 const firebaseConfig = {
     apiKey: "AIzaSyANafOMY9kojKKxBa9hwKrXAH6u4uTXhcU",
     authDomain: "wecode-91084.firebaseapp.com",
@@ -22,7 +22,6 @@ const firebaseConfig = {
     measurementId: "G-S8SGHVTC2Z",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getDatabase();
@@ -33,9 +32,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const socket = io();
 
     const codingSpace = document.getElementById("codingSpace");
-    const roomName = window.location.pathname.slice(1); // Extract room name from the URL
+    const roomName = window.location.pathname.slice(1);
 
     socket.emit("joinRoom", roomName);
+
+    const fetchAndDisplayInitialData = async () => {
+        try {
+            // Fetch the initial data from Firebase Realtime Database
+            const dataSnapshot = await get(child(codeRef, roomName));
+            if (dataSnapshot.exists()) {
+                const initialCode = dataSnapshot.val();
+                codingSpace.value = initialCode;
+            }
+        } catch (error) {
+            console.error("Error fetching initial data:", error);
+        }
+    };
+    fetchAndDisplayInitialData();
 
     socket.on("codeChange", (newCode) => {
         // Update the codingSpace value with the received code
