@@ -8,6 +8,7 @@ const server = http.createServer(app);
 const io = socketIo(server);
 const port = 3000;
 const fs = require("fs");
+const cors = require("cors");
 
 // Serve static files from the root directory
 app.use(express.static(__dirname));
@@ -17,6 +18,7 @@ app.use(
     "/socket.io",
     express.static(__dirname + "/node_modules/socket.io/client-dist")
 );
+app.use(cors());
 
 //Utilizing bodyParser
 app.use(bodyParser.json());
