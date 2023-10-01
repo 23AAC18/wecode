@@ -27,6 +27,8 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getDatabase();
 
+const codeRef = ref(db, "code");
+
 document.addEventListener("DOMContentLoaded", () => {
     const socket = io();
 
@@ -36,11 +38,18 @@ document.addEventListener("DOMContentLoaded", () => {
     socket.emit("joinRoom", roomName);
 
     socket.on("codeChange", (newCode) => {
+        // Update the codingSpace value with the received code
         codingSpace.value = newCode;
+
+        // Update Firebase Realtime Database with the new code
+        update(codeRef, { [roomName]: newCode });
     });
 
     codingSpace.addEventListener("input", () => {
         const newCode = codingSpace.value;
         socket.emit("codeChange", { roomName, newCode });
+
+        // Update Firebase Realtime Database with the new code
+        update(codeRef, { [roomName]: newCode });
     });
 });
