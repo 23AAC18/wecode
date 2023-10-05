@@ -1,4 +1,4 @@
-let editor = document.querySelector("#editor");
+const editor = document.querySelector("#editor");
 
 ace.edit(editor, {
     theme: "ace/theme/cobalt",
