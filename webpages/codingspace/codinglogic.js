@@ -10,6 +10,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
+const editor = document.querySelector("#editor");
+
+ace.edit(editor, {
+    theme: "ace/theme/cobalt",
+    mode: "ace/mode/javascript",
+});
+
 const firebaseConfig = {
     apiKey: "AIzaSyANafOMY9kojKKxBa9hwKrXAH6u4uTXhcU",
     authDomain: "wecode-91084.firebaseapp.com",
