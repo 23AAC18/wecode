@@ -60,6 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Update Firebase Realtime Database with the new code
         update(codeRef, { [roomName]: newCode });
+
+        editor.setValue(newCode, -1);
     });
 
     codingSpace.addEventListener("input", () => {
