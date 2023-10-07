@@ -10,12 +10,9 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
-const editor = document.querySelector("#editor");
-
-ace.edit(editor, {
-    theme: "ace/theme/cobalt",
-    mode: "ace/mode/javascript",
-});
+const editor = ace.edit("editor");
+editor.setTheme("ace/theme/cobalt");
+editor.getSession().setMode("ace/mode/javascript");
 
 const firebaseConfig = {
     apiKey: "AIzaSyANafOMY9kojKKxBa9hwKrXAH6u4uTXhcU",
@@ -68,6 +65,15 @@ document.addEventListener("DOMContentLoaded", () => {
     codingSpace.addEventListener("input", () => {
         const newCode = codingSpace.value;
         socket.emit("codeChange", { roomName, newCode });
+
+        // Update Firebase Realtime Database with the new code
+        update(codeRef, { [roomName]: newCode });
+        editor.setValue(newCode, -1);
+    });
+
+    editor.on("change", (event) => {
+        const newCode = editor.getValue();
+        codingSpace.value = newCode;
 
         // Update Firebase Realtime Database with the new code
         update(codeRef, { [roomName]: newCode });
