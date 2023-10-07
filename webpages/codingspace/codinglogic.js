@@ -80,5 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Update Firebase Realtime Database with the new code
         update(codeRef, { [roomName]: newCode });
+        //THIS BELOW IS THE ISSUE
+        // socket.emit("codeChange", { roomName, newCode });
+        //THIS ABOVE IS THE ISSUE
     });
 });
