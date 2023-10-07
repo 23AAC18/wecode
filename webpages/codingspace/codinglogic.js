@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (dataSnapshot.exists()) {
                 const initialCode = dataSnapshot.val();
                 codingSpace.value = initialCode;
+                editor.setValue(initialCode, -1);
             }
         } catch (error) {
             console.error("Error fetching initial data:", error);
@@ -73,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         editor.setValue(newCode, -1);
     });
 
-    editor.on("change", (event) => {
+    editor.on("input", (event) => {
         const newCode = editor.getValue();
         codingSpace.value = newCode;
 
