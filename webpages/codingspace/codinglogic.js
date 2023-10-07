@@ -34,15 +34,21 @@ const codeRef = ref(db, "code");
 
 document.addEventListener("DOMContentLoaded", () => {
     const socket = io();
-
     const codingSpace = document.getElementById("codingSpace");
     const roomName = window.location.pathname.slice(1);
+    let editorChangeInProgress = false;
 
     socket.emit("joinRoom", roomName);
 
+    // Initialize ACE Editor
+    const editor = ace.edit("editor");
+    editor.setTheme("ace/theme/cobalt");
+    editor.getSession().setMode("ace/mode/javascript");
+
+    const codeRef = ref(db, "code");
+
     const fetchAndDisplayInitialData = async () => {
         try {
-            // Fetch the initial data from Firebase Realtime Database
             const dataSnapshot = await get(child(codeRef, roomName));
             if (dataSnapshot.exists()) {
                 const initialCode = dataSnapshot.val();
@@ -55,33 +61,34 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     fetchAndDisplayInitialData();
 
-    socket.on("codeChange", (newCode) => {
-        // Update the codingSpace value with the received code
+    const updateCode = (newCode) => {
+        editorChangeInProgress = true;
         codingSpace.value = newCode;
-
-        // Update Firebase Realtime Database with the new code
-        update(codeRef, { [roomName]: newCode });
-
         editor.setValue(newCode, -1);
+        editorChangeInProgress = false;
+        ace.edit("editor").moveCursorTo(-1, -1);
+    };
+
+    const onEditorChange = (event) => {
+        if (!editorChangeInProgress) {
+            const newCode = editor.getValue();
+            updateCode(newCode);
+            socket.emit("codeChange", { roomName, newCode });
+            update(codeRef, { [roomName]: newCode });
+        }
+    };
+
+    editor.getSession().on("change", onEditorChange);
+
+    socket.on("codeChange", (newCode) => {
+        if (!editorChangeInProgress) {
+            updateCode(newCode);
+        }
     });
 
     codingSpace.addEventListener("input", () => {
         const newCode = codingSpace.value;
         socket.emit("codeChange", { roomName, newCode });
-
-        // Update Firebase Realtime Database with the new code
         update(codeRef, { [roomName]: newCode });
-        editor.setValue(newCode, -1);
-    });
-
-    editor.on("input", (event) => {
-        const newCode = editor.getValue();
-        codingSpace.value = newCode;
-
-        // Update Firebase Realtime Database with the new code
-        update(codeRef, { [roomName]: newCode });
-        //THIS BELOW IS THE ISSUE
-        // socket.emit("codeChange", { roomName, newCode });
-        //THIS ABOVE IS THE ISSUE
     });
 });
