@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (dataSnapshot.exists()) {
                 const initialCode = dataSnapshot.val();
                 codingSpace.value = initialCode;
-                editor.setValue(initialCode, -1);
+                editor.setValue(initialCode, 1);
             }
         } catch (error) {
             console.error("Error fetching initial data:", error);
@@ -64,9 +64,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const updateCode = (newCode) => {
         editorChangeInProgress = true;
         codingSpace.value = newCode;
-        editor.setValue(newCode, -1);
+        editor.setValue(newCode, 1);
         editorChangeInProgress = false;
-        ace.edit("editor").moveCursorTo(-1, -1);
+        // ace.edit("editor").moveCursorTo(1, 1);
     };
 
     const onEditorChange = (event) => {
