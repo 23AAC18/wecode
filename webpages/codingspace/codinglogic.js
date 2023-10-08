@@ -98,4 +98,56 @@ document.addEventListener("DOMContentLoaded", () => {
         socket.emit("codeChange", { roomName, newCode });
         update(codeRef, { [roomName]: newCode });
     });
+
+    const runButton = document.getElementById("runButton");
+    const outputDiv = document.getElementById("output");
+
+    runButton.addEventListener("click", () => {
+        const codeToRun = editor.getValue();
+
+        try {
+            // Use eval to evaluate the code
+            eval(codeToRun);
+
+            // Search for console.log statements in the code and extract their outputs
+            const consoleOutput = captureConsoleOutput(codeToRun);
+
+            // Display the result in the output div
+            if (consoleOutput) {
+                outputDiv.innerHTML = `Result: ${consoleOutput}`;
+            } else {
+                outputDiv.innerHTML = "";
+            }
+        } catch (error) {
+            // Display errors in the output div
+            outputDiv.innerHTML = `Error: ${error}`;
+        }
+    });
+
+    // Function to capture console.log statements
+    function captureConsoleOutput(code) {
+        const consoleLogMessages = [];
+        const originalConsoleLog = console.log;
+
+        // Override console.log to capture messages
+        console.log = function (...args) {
+            consoleLogMessages.push(
+                args.map((arg) => JSON.stringify(arg)).join(" ")
+            );
+        };
+
+        // Execute the code
+        try {
+            eval(code);
+        } catch (error) {
+            // Handle errors in the code
+            console.log(`Error: ${error}`);
+        } finally {
+            // Restore the original console.log
+            console.log = originalConsoleLog;
+        }
+
+        // Return the captured console output
+        return consoleLogMessages.join("\n");
+    }
 });
