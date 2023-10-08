@@ -63,10 +63,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const updateCode = (newCode) => {
         editorChangeInProgress = true;
+
+        // Get the current cursor position
+        const cursorPosition = editor.getCursorPosition();
+
         codingSpace.value = newCode;
-        editor.setValue(newCode, 1);
+        editor.setValue(newCode, -1);
+
+        // Restore the cursor position
+        editor.moveCursorToPosition(cursorPosition);
+
         editorChangeInProgress = false;
-        // ace.edit("editor").moveCursorTo(1, 1);
     };
 
     const onEditorChange = (event) => {
