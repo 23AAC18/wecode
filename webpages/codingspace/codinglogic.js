@@ -10,6 +10,10 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
+const editor = ace.edit("editor");
+editor.setTheme("ace/theme/cobalt");
+editor.getSession().setMode("ace/mode/javascript");
+
 const firebaseConfig = {
     apiKey: "AIzaSyANafOMY9kojKKxBa9hwKrXAH6u4uTXhcU",
     authDomain: "wecode-91084.firebaseapp.com",
@@ -30,19 +34,26 @@ const codeRef = ref(db, "code");
 
 document.addEventListener("DOMContentLoaded", () => {
     const socket = io();
-
     const codingSpace = document.getElementById("codingSpace");
     const roomName = window.location.pathname.slice(1);
+    let editorChangeInProgress = false;
 
     socket.emit("joinRoom", roomName);
 
+    // Initialize ACE Editor
+    const editor = ace.edit("editor");
+    editor.setTheme("ace/theme/cobalt");
+    editor.getSession().setMode("ace/mode/javascript");
+
+    const codeRef = ref(db, "code");
+
     const fetchAndDisplayInitialData = async () => {
         try {
-            // Fetch the initial data from Firebase Realtime Database
             const dataSnapshot = await get(child(codeRef, roomName));
             if (dataSnapshot.exists()) {
                 const initialCode = dataSnapshot.val();
                 codingSpace.value = initialCode;
+                editor.setValue(initialCode, 1);
             }
         } catch (error) {
             console.error("Error fetching initial data:", error);
@@ -50,19 +61,93 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     fetchAndDisplayInitialData();
 
-    socket.on("codeChange", (newCode) => {
-        // Update the codingSpace value with the received code
-        codingSpace.value = newCode;
+    const updateCode = (newCode) => {
+        editorChangeInProgress = true;
 
-        // Update Firebase Realtime Database with the new code
-        update(codeRef, { [roomName]: newCode });
+        // Get the current cursor position
+        const cursorPosition = editor.getCursorPosition();
+
+        codingSpace.value = newCode;
+        editor.setValue(newCode, -1);
+
+        // Restore the cursor position
+        editor.moveCursorToPosition(cursorPosition);
+
+        editorChangeInProgress = false;
+    };
+
+    const onEditorChange = (event) => {
+        if (!editorChangeInProgress) {
+            const newCode = editor.getValue();
+            updateCode(newCode);
+            socket.emit("codeChange", { roomName, newCode });
+            update(codeRef, { [roomName]: newCode });
+        }
+    };
+
+    editor.getSession().on("change", onEditorChange);
+
+    socket.on("codeChange", (newCode) => {
+        if (!editorChangeInProgress) {
+            updateCode(newCode);
+        }
     });
 
     codingSpace.addEventListener("input", () => {
         const newCode = codingSpace.value;
         socket.emit("codeChange", { roomName, newCode });
-
-        // Update Firebase Realtime Database with the new code
         update(codeRef, { [roomName]: newCode });
     });
+
+    const runButton = document.getElementById("runButton");
+    const outputDiv = document.getElementById("output");
+
+    runButton.addEventListener("click", () => {
+        const codeToRun = editor.getValue();
+
+        try {
+            // Use eval to evaluate the code
+            eval(codeToRun);
+
+            // Search for console.log statements in the code and extract their outputs
+            const consoleOutput = captureConsoleOutput(codeToRun);
+
+            // Display the result in the output div
+            if (consoleOutput) {
+                outputDiv.innerHTML = `Result: ${consoleOutput}`;
+            } else {
+                outputDiv.innerHTML = "";
+            }
+        } catch (error) {
+            // Display errors in the output div
+            outputDiv.innerHTML = `Error: ${error}`;
+        }
+    });
+
+    // Function to capture console.log statements
+    function captureConsoleOutput(code) {
+        const consoleLogMessages = [];
+        const originalConsoleLog = console.log;
+
+        // Override console.log to capture messages
+        console.log = function (...args) {
+            consoleLogMessages.push(
+                args.map((arg) => JSON.stringify(arg)).join(" ")
+            );
+        };
+
+        // Execute the code
+        try {
+            eval(code);
+        } catch (error) {
+            // Handle errors in the code
+            console.log(`Error: ${error}`);
+        } finally {
+            // Restore the original console.log
+            console.log = originalConsoleLog;
+        }
+
+        // Return the captured console output
+        return consoleLogMessages.join("\n");
+    }
 });

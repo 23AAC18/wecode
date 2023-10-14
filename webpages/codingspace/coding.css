@@ -3,7 +3,7 @@
     width: 100%;
     background-color: #2d2d2e;
     color: #ffffff;
-    z-index: 1;
+    z-index: 10;
     position: fixed;
     display: flex;
     justify-content: space-between;
@@ -72,15 +72,59 @@
     padding-left: 5px;
     height: 50px;
 }
-.codebox {
-    border: 1px solid black;
-    background-color: #eeeeff;
-    white-space: pre-line;
-    padding: 10px;
-    font-size: 0.9em;
-    display: inline-block;
-    height: 500px;
-    width: 80%;
-    margin-left: 280px;
-    margin-top: 30px;
+
+#codingSpace {
+    display: none;
 }
+
+.editor-container {
+    width: 900px;
+    height: 540px;
+    margin: 20px auto;
+    position: relative;
+}
+
+#editor {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+}
+
+#output {
+    width: 900px;            
+    height: 300px;           
+    background-color: #8b98a4; 
+    border: 2px solid #021b2c; 
+    padding: 10px;           
+    margin: 30px;            
+    text-align: left;      
+    color: #ffffff;         
+    font-size: 18px;         
+    font-weight: bold;       
+}
+
+#runButton {
+  width: 100px;  
+  display: inline-block;
+  padding: 10px 20px;
+  margin-left: 25px;
+  background-color: #08120be8; 
+  color: #efe8e8;
+  border: none;
+  border-radius: 5px; 
+  cursor: pointer; 
+  text-align: center;
+  text-decoration: none; 
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#runButton:hover {
+    opacity: 0.78;
+}
+
