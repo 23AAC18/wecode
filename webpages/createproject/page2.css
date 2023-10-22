@@ -181,10 +181,11 @@
     background-color: white;
     color: #000000;
     border-radius: 8px;
-    padding-bottom: 15px; 
+    padding-bottom: 15px;
     padding-top: 15px;
     padding-right: 50px;
     padding-left: 50px;
+    margin-right: 10px;
     border: solid;
 }
 .search-bar {
@@ -219,4 +220,24 @@
     height: 100%;
     width: 100%;
     border: none;
+}
+
+.clear-button:hover {
+    background-color: #000000;
+    color: white;
+}
+
+.create-button-inner-2:hover {
+    background-color: rgb(253, 253, 253);
+    color: black;
+}
+
+#project-name-input {
+    width: 550px;
+    height: 50px;
+}
+
+#project-description {
+    width: 550px;
+    height: 50px;
 }

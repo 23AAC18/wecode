@@ -34,7 +34,7 @@
             </div>
             <div class="home-page-buttons">
                 <button
-                    id="heder-signup"
+                    id="header-signup"
                     class="home-page-button-element"
                     role="button"
                 >
@@ -51,22 +51,24 @@
         </div>
         <div id="input-box">
             <form id="registration-field" class="input-field">
-                <label>Username : </label>
-                <input
-                    type="text"
-                    placeholder="Enter Username"
-                    id="registration-username"
-                    name="username"
-                    required
-                />
-                <label>Password : </label>
-                <input
-                    type="password"
-                    placeholder="Enter Password"
-                    id="registration-password"
-                    name="password"
-                    required
-                />
+                <div class="enter-stuff-here">
+                    <label>Username : </label>
+                    <input
+                        type="text"
+                        placeholder="Enter Username"
+                        id="registration-username"
+                        name="username"
+                        required
+                    />
+                    <label>Password : </label>
+                    <input
+                        type="password"
+                        placeholder="Enter Password"
+                        id="registration-password"
+                        name="password"
+                        required
+                    />
+                </div>
                 <button
                     id="home-page-signup"
                     class="home-page-button-element auth-button"
@@ -77,22 +79,25 @@
                 </button>
             </form>
             <form id="login-field" class="input-field">
-                <label>Username : </label>
-                <input
-                    type="text"
-                    placeholder="Enter Username"
-                    id="login-username"
-                    name="username"
-                    required
-                />
-                <label>Password : </label>
-                <input
-                    type="password"
-                    placeholder="Enter Password"
-                    id="login-password"
-                    name="password"
-                    required
-                />
+                <div class="enter-stuff-here">
+                    <label>Username : </label>
+                    <input
+                        type="text"
+                        placeholder="Enter Username"
+                        id="login-username"
+                        name="username"
+                        required
+                    />
+                    <label>Password : </label>
+                    <input
+                        type="password"
+                        placeholder="Enter Password"
+                        id="login-password"
+                        name="password"
+                        required
+                    />
+                </div>
+
                 <button
                     id="home-page-login"
                     class="home-page-button-element auth-button"
@@ -139,6 +144,7 @@
                 </ul>
             </div>
         </div>
+        <script defer src="/style.js"></script>
         <script defer src="/script.js"></script>
     </body>
 </html>
