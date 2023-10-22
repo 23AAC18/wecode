@@ -1,7 +1,7 @@
 .header {
     height: 80px;
     width: 100%;
-    background-color: #2d2d2e;
+    background-color: #000000;
     color: #ffffff;
     z-index: 10;
     position: fixed;
@@ -96,35 +96,34 @@
 }
 
 #output {
-    width: 900px;            
-    height: 300px;           
-    background-color: #8b98a4; 
-    border: 2px solid #021b2c; 
-    padding: 10px;           
-    margin: 30px;            
-    text-align: left;      
-    color: #ffffff;         
-    font-size: 18px;         
-    font-weight: bold;       
+    width: 900px;
+    height: 300px;
+    background-color: #8b98a4;
+    border: 2px solid #021b2c;
+    padding: 10px;
+    margin: 30px;
+    text-align: left;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 #runButton {
-  width: 100px;  
-  display: inline-block;
-  padding: 10px 20px;
-  margin-left: 25px;
-  background-color: #08120be8; 
-  color: #efe8e8;
-  border: none;
-  border-radius: 5px; 
-  cursor: pointer; 
-  text-align: center;
-  text-decoration: none; 
-  font-size: 16px;
-  font-weight: 400;
+    width: 100px;
+    display: inline-block;
+    padding: 10px 20px;
+    margin-left: 25px;
+    background-color: #08120be8;
+    color: #efe8e8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 #runButton:hover {
     opacity: 0.78;
 }
-
