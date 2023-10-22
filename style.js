@@ -26,7 +26,6 @@ function toggleLogIn() {
             LogInField.style.display = "none";
             signUpField.style.display == "none";
         }
-        console.log("Working");
     });
 }
 
