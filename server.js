@@ -20,6 +20,13 @@ app.use(
     express.static(__dirname + "/node_modules/socket.io/client-dist")
 );
 app.use(cors());
+app.use(
+    session({
+        secret: "quartz/Q:-)097",
+        resave: false,
+        saveUninitialized: true,
+    })
+);
 
 //Utilizing bodyParser
 app.use(bodyParser.json());
@@ -79,6 +86,7 @@ app.get("/login", (req, res) => {
             res.status(500).json({ error: "Database error" });
         } else {
             if (results.length > 0) {
+                req.session.username = username;
                 res.json({
                     message: "Login successful",
                     url: "/home",
