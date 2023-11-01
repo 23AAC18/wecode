@@ -23,54 +23,11 @@
     padding-top: 80px;
     background-color: rgba(0, 0, 0, 0.05);
 }
-.search-group {
-    margin-top: 15px;
-}
-
-.search-group label {
-    display: block;
-    margin-bottom: 5px;
-}
-.search-group input,
-.search-group textarea {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
 
 .content {
     padding-top: 80px;
     padding-left: 15%;
-    width: 80%;
-    margin: auto;
-}
-
-.button-container {
-    padding: 10px;
-    display: flex;
     width: 100%;
-    justify-content: space-around;
-    background-color: rgb(215, 186, 186);
-}
-
-.button {
-    padding: 8px 16px;
-    border: none;
-    cursor: pointer;
-}
-
-.button:hover {
-    background-color: #45a049;
-}
-.button {
-    background-color: #9b9b9b;
-    color: #ddd;
-    border-radius: 16px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    padding-right: 5px;
-    padding-left: 5px;
-    height: 50px;
 }
 
 #codingSpace {
@@ -78,14 +35,14 @@
 }
 
 .editor-container {
-    width: 900px;
+    width: 920px;
     height: 540px;
-    margin: 20px auto;
+    margin: 20px 0px 0px 155px;
     position: relative;
 }
 
 #editor {
-    position: absolute;
+    /* position: absolute; */
     left: 0;
     right: 0;
     top: 0;
@@ -96,7 +53,7 @@
 }
 
 #output {
-    width: 900px;
+    width: 1000px;
     height: 300px;
     background-color: #8b98a4;
     border: 2px solid #021b2c;
@@ -112,7 +69,7 @@
     width: 100px;
     display: inline-block;
     padding: 10px 20px;
-    margin-left: 25px;
+    margin: 25px;
     background-color: #08120be8;
     color: #efe8e8;
     border: none;
