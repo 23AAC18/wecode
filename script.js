@@ -1,3 +1,10 @@
+import {
+    setCookie,
+    getCookie,
+    checkUsernameChange,
+    updateUsername,
+} from "./cookie.js";
+
 document.addEventListener("DOMContentLoaded", function () {
     const registrationForm = document.getElementById("registration-field");
 
@@ -46,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((data) => {
                 if (data.message === "Login successful") {
                     alert("Login successful");
+                    updateUsername(username);
                     // redirect to the url if success
                     window.location.replace(data.url);
                 } else {

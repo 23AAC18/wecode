@@ -5,9 +5,10 @@ import {
     checkUsernameChange,
     updateUsername,
 } from "./cookie.js";
+
 // Function to update the username and the corresponding cookie
 
-setInterval(checkUsernameChange, 1 * 5 * 1000); // Check every 5 seconds
+setInterval(checkUsernameChange, 10 * 60 * 1000); // Check every 10 minutes
 
 // Check if the username is already stored in a cookie
 const storedUsername = getCookie("username");

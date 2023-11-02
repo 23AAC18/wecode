@@ -93,7 +93,6 @@ app.get("/login", (req, res) => {
             if (results.length > 0) {
                 res.json({
                     message: "Login successful",
-                    username: username,
                     url: "/home",
                 });
                 // checkUsernameChange();
