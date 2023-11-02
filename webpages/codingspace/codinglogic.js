@@ -11,19 +11,7 @@ import {
 import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
 // Import the getCookie function from the "cookie.js" module
-import { getCookie } from "./cookie.js";
-
-// Function to get a cookie
-function getCookie(name) {
-    const cookies = document.cookie.split(";");
-    for (let i = 0; i < cookies.length; i++) {
-        const cookie = cookies[i].trim().split("=");
-        if (cookie[0] === name) {
-            return cookie[1];
-        }
-    }
-    return null;
-}
+import { getCookie } from "/cookie.js";
 
 // Access the 'username' cookie set in "currentProjects.js"
 const username = getCookie("username");

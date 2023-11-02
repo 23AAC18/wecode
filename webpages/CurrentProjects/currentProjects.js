@@ -33,8 +33,7 @@ function checkUsernameChange() {
         });
 }
 
-// Periodically check for username changes (e.g., every 5 minutes)
-setInterval(checkUsernameChange, 1 * 5 * 1000); // Check every 5 minutes
+setInterval(checkUsernameChange, 1 * 5 * 1000); // Check every 5 seconds
 
 // Check if the username is already stored in a cookie
 const storedUsername = getCookie("username");
