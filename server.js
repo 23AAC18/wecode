@@ -34,13 +34,16 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 app.get("/home", (req, res) => {
+    // const username = req.session.username;
+    // console.log(username);
     res.sendFile(__dirname + "/webpages/CurrentProjects/currentProjects.html");
-    const username = req.session.username;
-    console.log(username);
 });
-// app.get("/code", (req, res) => {
-//     res.sendFile(__dirname + "/webpages/codingspace/coding.html");
-// });
+
+app.get("/getUsername", (req, res) => {
+    console.log(req.session.username);
+    const username = req.session.username;
+    res.json({ username });
+});
 
 server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
@@ -92,6 +95,7 @@ app.get("/login", (req, res) => {
                     message: "Login successful",
                     url: "/home",
                 });
+                // checkUsernameChange();
             } else {
                 res.json({ message: "Invalid username or password" });
             }
