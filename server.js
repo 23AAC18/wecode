@@ -38,9 +38,6 @@ app.get("/home", (req, res) => {
     const username = req.session.username;
     console.log(username);
 });
-// app.get("/code", (req, res) => {
-//     res.sendFile(__dirname + "/webpages/codingspace/coding.html");
-// });
 
 server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
