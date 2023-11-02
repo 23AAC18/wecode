@@ -24,10 +24,8 @@ export function checkUsernameChange() {
             const storedUsername = getCookie("username");
 
             if (newUsername !== storedUsername) {
-                // Username has changed; update the cookie and UI
+                // Update cookie Value
                 updateUsername(newUsername);
-
-                // Optionally, update the UI to reflect the new username
             }
         })
         .catch((error) => {
@@ -36,12 +34,9 @@ export function checkUsernameChange() {
 }
 
 export function updateUsername(newUsername) {
-    // Update the username
+    // update the u-name
     const username = newUsername;
 
-    // Update the corresponding cookie
-    setCookie("username", username, 30); // Set the cookie to expire in 30 days
-
-    // Optionally, you can also update the UI to reflect the new username
-    // (e.g., update a user profile display)
+    //Cookie=30DAYS
+    setCookie("username", username, 30);
 }
