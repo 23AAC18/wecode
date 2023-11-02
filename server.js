@@ -34,9 +34,15 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 app.get("/home", (req, res) => {
+    // const username = req.session.username;
+    // console.log(username);
     res.sendFile(__dirname + "/webpages/CurrentProjects/currentProjects.html");
+});
+
+app.get("/getUsername", (req, res) => {
+    console.log(req.session.username);
     const username = req.session.username;
-    console.log(username);
+    res.json({ username });
 });
 
 server.listen(port, () => {
@@ -87,8 +93,10 @@ app.get("/login", (req, res) => {
             if (results.length > 0) {
                 res.json({
                     message: "Login successful",
+                    username: username,
                     url: "/home",
                 });
+                // checkUsernameChange();
             } else {
                 res.json({ message: "Invalid username or password" });
             }
