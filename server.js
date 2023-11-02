@@ -20,7 +20,13 @@ app.use(
     express.static(__dirname + "/node_modules/socket.io/client-dist")
 );
 app.use(cors());
-
+app.use(
+    session({
+        secret: "quartz/Q:-)097",
+        resave: false,
+        saveUninitialized: true,
+    })
+);
 //Utilizing bodyParser
 app.use(bodyParser.json());
 
@@ -28,11 +34,16 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 app.get("/home", (req, res) => {
+    // const username = req.session.username;
+    // console.log(username);
     res.sendFile(__dirname + "/webpages/CurrentProjects/currentProjects.html");
 });
-// app.get("/code", (req, res) => {
-//     res.sendFile(__dirname + "/webpages/codingspace/coding.html");
-// });
+
+app.get("/getUsername", (req, res) => {
+    console.log(req.session.username);
+    const username = req.session.username;
+    res.json({ username });
+});
 
 server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
@@ -78,11 +89,13 @@ app.get("/login", (req, res) => {
             console.error("Error searching for user:", err);
             res.status(500).json({ error: "Database error" });
         } else {
+            req.session.username = username;
             if (results.length > 0) {
                 res.json({
                     message: "Login successful",
                     url: "/home",
                 });
+                // checkUsernameChange();
             } else {
                 res.json({ message: "Invalid username or password" });
             }
