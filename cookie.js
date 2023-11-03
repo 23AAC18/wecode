@@ -34,9 +34,6 @@ export function checkUsernameChange() {
 }
 
 export function updateUsername(newUsername) {
-    // update the u-name
-    const username = newUsername;
-
     //Cookie=30DAYS
-    setCookie("username", username, 30);
+    setCookie("username", newUsername, 30);
 }

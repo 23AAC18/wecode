@@ -33,6 +33,7 @@ app.use(bodyParser.json());
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
+
 app.get("/home", (req, res) => {
     // const username = req.session.username;
     // console.log(username);
