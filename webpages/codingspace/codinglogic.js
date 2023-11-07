@@ -9,20 +9,12 @@ import {
     remove,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-
-// Import the getCookie function from the "cookie.js" module
 import { getCookie } from "/cookie.js";
 
-// Access the 'username' cookie set in "currentProjects.js"
 const username = getCookie("username");
-
 if (username) {
-    // Use the stored username
     console.log("Username from codinglogic.js:", username);
-
-    // You can perform actions or logic based on the stored username
 } else {
-    // Handle the case where the cookie isn't set
     console.log("No username stored in the cookie");
 }
 
