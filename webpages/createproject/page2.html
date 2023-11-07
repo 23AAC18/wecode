@@ -6,6 +6,7 @@
         <title>wecode.createProject()</title>
         <link rel="stylesheet" href="/webpages/createproject/page2.css" /> 
         <script defer type="module" src="currentProjects.js"></script>
+        <script defer src="sidebar.js"></script>
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
@@ -27,17 +28,21 @@
       <div id="sidebar">
         <ul class="list-group">
           <li
-              class="list-group-item"
-              style="background-color: rgba(0, 0, 0, 0)"
+            class="list-group-item"
+            style="background-color: rgba(0, 0, 0, 0)"
           >
-              <button class="sidebar-button">Home</button>
+            <button id="home-button" class="sidebar-button">
+              Home
+            </button>
           </li>
           <li
-              class="list-group-item"
-              style="background-color: rgba(0, 0, 0, 0)"
+            class="list-group-item"
+            style="background-color: rgba(0, 0, 0, 0)"
           >
-              <button class="sidebar-button">Create Project</button>
-          </li> 
+            <button id="create-project-button" class="sidebar-button">
+              Create Project
+            </button>
+          </li>
         </ul>
       </div>
             <!-- Page content -->
