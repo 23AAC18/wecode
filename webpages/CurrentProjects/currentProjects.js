@@ -4,7 +4,6 @@ import {
     checkUsernameChange,
     updateUsername,
 } from "./cookie.js";
-
 setInterval(checkUsernameChange, 10 * 60 * 1000); // Check username Change every 10 mins
 
 // Get username from cookie stored in browser
