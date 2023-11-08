@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     createForm.addEventListener("submit", function (event) {
         event.preventDefault();
+        const projectName = document.getElementById("project-name-input").value;
+        console.log(projectName);
     });
 
     function addProjectToDatabase(projectData) {
