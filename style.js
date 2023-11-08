@@ -1,3 +1,5 @@
+//This Page is for functionality regarding buttons, if you want to, delete this code:
+
 const headerSignUpButton = document.getElementById("header-signup");
 const headerLogInButton = document.getElementById("header-login");
 const signUpField = document.getElementById("registration-field");

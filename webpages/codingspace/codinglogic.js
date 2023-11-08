@@ -1,3 +1,7 @@
+//This is the page connected to coding.html
+
+//Implement code such that logged in username is accessible on this page.
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
 import {
@@ -9,16 +13,6 @@ import {
     remove,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-import { getCookie } from "/cookie.js";
-
-const username = getCookie("username");
-if (username) {
-    console.log("Username from codinglogic.js:", username);
-} else {
-    console.log("No username stored in the cookie");
-}
-
-// Continue with the rest of your code
 
 const editor = ace.edit("editor");
 editor.setTheme("ace/theme/cobalt");

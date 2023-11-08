@@ -37,68 +37,15 @@ app.get("/createProject",(req, res) => {
     res.sendFile(__dirname + "/webpages/createproject/page2.html");
 });
 
-app.get("/getUsername", (req, res) => {
-    console.log(req.session.username);
-    const username = req.session.username;
-    res.json({ username });
-});
-
 server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "admin",
-    password: "0000",
-    database: "userauth",
-});
+// Connect to the database here
 
-// Connect to the database
-db.connect((err) => {
-    if (err) {
-        console.error("Error connecting to MySQL:", err);
-    } else {
-        console.log(`Connected to MySQL database`);
-    }
-});
+//Write Server Side Code for Registration here
 
-//Register User
-app.post("/register", (req, res) => {
-    const { username, password } = req.body;
-    const sql = "INSERT INTO authdetails (username, password) VALUES (?, ?)";
-    db.query(sql, [username, password], (err, results) => {
-        if (err) {
-            console.error("Error inserting user:", err);
-            res.status(500).json({ error: "Database error" });
-        } else {
-            res.json({ message: "User inserted successfully" });
-        }
-    });
-});
-
-//Log Into User Account
-app.get("/login", (req, res) => {
-    const { username, password } = req.query;
-    const sql = "SELECT * FROM authdetails WHERE username = ? AND password = ?";
-    db.query(sql, [username, password], (err, results) => {
-        console.log(results);
-        if (err) {
-            console.error("Error searching for user:", err);
-            res.status(500).json({ error: "Database error" });
-        } else {
-            if (results.length > 0) {
-                res.json({
-                    message: "Login successful",
-                    url: "/home",
-                });
-                // checkUsernameChange();
-            } else {
-                res.json({ message: "Invalid username or password" });
-            }
-        }
-    });
-});
+//Write Server Side Code for Login Here
 
 app.get("/:roomName", (req, res) => {
     const roomName = req.params.roomName;

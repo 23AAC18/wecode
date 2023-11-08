@@ -1,9 +1,3 @@
-import { getCookie } from "/cookie.js";
+//This is the page connected to page2.html
 
-const username = getCookie("username");
-
-if (username) {
-    console.log("Username from createproject.js:", username);
-} else {
-    console.log("No username stored in the cookie");
-}
+//Implement code such that logged in username is accessible on this page.
