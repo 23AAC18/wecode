@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     createForm.addEventListener("submit", function (event) {
         event.preventDefault();
-        if()
     });
 
     function addProjectToDatabase(projectData) {
