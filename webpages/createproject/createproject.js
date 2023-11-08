@@ -16,6 +16,14 @@ if (username) {
 const projectsRef = ref(db, "projects");
 
 document.addEventListener("DOMContentLoaded", () => {
+    const createForm = document.getElementById("form-field");
+
+    createForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const projectName = document.getElementById("project-name-input").value;
+        console.log(projectName);
+    });
+
     function addProjectToDatabase(projectData) {
         set(projectsRef, projectData)
             .then(() => {
