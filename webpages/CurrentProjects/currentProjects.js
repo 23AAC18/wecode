@@ -1,21 +1,16 @@
-// Import the setCookie and getCookie functions from the "cookie.js" module
 import {
     setCookie,
     getCookie,
     checkUsernameChange,
     updateUsername,
 } from "./cookie.js";
+setInterval(checkUsernameChange, 10 * 60 * 1000); // Check username Change every 10 mins
 
-// Function to update the username and the corresponding cookie
-
-setInterval(checkUsernameChange, 10 * 60 * 1000); // Check every 10 minutes
-
-// Check if the username is already stored in a cookie
+// Get username from cookie stored in browser
 const storedUsername = getCookie("username");
 
 if (storedUsername) {
-    // Use the stored username
     console.log(storedUsername);
 } else {
-    // Handle the case where the cookie isn't set
+    //It honestly shouldn't come here, but if it does, you know who to call.
 }

@@ -20,23 +20,21 @@ app.use(
     express.static(__dirname + "/node_modules/socket.io/client-dist")
 );
 app.use(cors());
-app.use(
-    session({
-        secret: "quartz/Q:-)097",
-        resave: false,
-        saveUninitialized: true,
-    })
-);
+
 //Utilizing bodyParser
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
+
 app.get("/home", (req, res) => {
-    // const username = req.session.username;
-    // console.log(username);
     res.sendFile(__dirname + "/webpages/CurrentProjects/currentProjects.html");
+});
+
+app.get("/createProject",(req, res) => {
+
+    res.sendFile(__dirname + "/webpages/createproject/page2.html");
 });
 
 app.get("/getUsername", (req, res) => {
@@ -89,7 +87,6 @@ app.get("/login", (req, res) => {
             console.error("Error searching for user:", err);
             res.status(500).json({ error: "Database error" });
         } else {
-            req.session.username = username;
             if (results.length > 0) {
                 res.json({
                     message: "Login successful",
