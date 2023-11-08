@@ -113,12 +113,10 @@
 }
 .details-text {
     font-size: 18px;
-    font-family: bold;
     padding-top: 15px;
 }
 .project-name-input {
     font-size: 18px;
-    font-family: bold;
     padding-top: 15px;
     padding-right: 40px;
 }
@@ -242,4 +240,3 @@
     width: 550px;
     height: 50px;
 }
-
