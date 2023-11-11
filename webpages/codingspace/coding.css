@@ -36,7 +36,7 @@
 
 .editor-container {
     width: 920px;
-    height: 540px;
+    height: 570px;
     margin: 20px 0px 0px 155px;
     position: relative;
 }
@@ -53,12 +53,13 @@
 }
 
 #output {
-    width: 1000px;
+    width: 920px;
     height: 300px;
     background-color: #8b98a4;
     border: 2px solid #021b2c;
-    padding: 10px;
-    margin: 30px;
+   
+    margin: 155px;
+    margin-top: 10px;
     text-align: left;
     color: #ffffff;
     font-size: 18px;
@@ -69,7 +70,8 @@
     width: 100px;
     display: inline-block;
     padding: 10px 20px;
-    margin: 25px;
+    margin: 32px;
+    margin-left: 150px;
     background-color: #08120be8;
     color: #efe8e8;
     border: none;
