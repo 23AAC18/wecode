@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Belanosima&family=Dosis&display=swap");
+
 .header {
     height: 80px;
     width: 100%;
@@ -22,6 +24,12 @@
     float: left;
     padding-top: 80px;
     background-color: rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-button {
+    height: 100%;
+    width: 100%;
+    border: none;
 }
 
 .content {
