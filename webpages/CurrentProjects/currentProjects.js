@@ -38,32 +38,66 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getDatabase();
 
-document.addEventListener("DOMContentLoaded", async () => {
-    const projectsContainer = document.getElementById("projects-container");
+if (document.URL.includes("/home")) {
+    document.addEventListener("DOMContentLoaded", async () => {
+        const projectsContainer = document.getElementById("projects-container");
 
-    if (username) {
-        console.log(username);
-        try {
-            const userProjectsRef = ref(db, `users/${username}`);
-            const userProjectsSnapshot = await get(userProjectsRef);
-            if (userProjectsSnapshot.exists()) {
-                const userProjects = userProjectsSnapshot.val();
-                const userProjectsData = userProjects.projects;
-                console.log("User Projects Data:", userProjectsData);
-                Object.values(userProjectsData).forEach((valuePair) => {
-                    const projectName = valuePair.projectName;
-                    const projectDescription = valuePair.projectSummary;
-                    console.log(projectName, projectDescription);
-                });
-            } else {
-                console.log("No projects found for the user");
+        console.log(projectsContainer);
+
+        if (username) {
+            console.log(username);
+            try {
+                const userProjectsRef = ref(db, `users/${username}`);
+                const userProjectsSnapshot = await get(userProjectsRef);
+                if (userProjectsSnapshot.exists()) {
+                    const userProjects = userProjectsSnapshot.val();
+                    const userProjectsData = userProjects.projects;
+                    console.log("User Projects Data:", userProjectsData);
+
+                    Object.values(userProjectsData).forEach((valuePair) => {
+                        const projectName = valuePair.projectName;
+                        const projectDescription = valuePair.projectSummary;
+                        const projectCardHTML = `
+                            <div class="project-element">
+                                <div class="card mb-3" style="max-width: 540px">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4">
+                                            <a href="#" onclick="buttonClicked()">
+                                                <img
+                                                    src="/Assets/images/demo-landscape.jpg"
+                                                    class="card-img holding-image"
+                                                    alt="..."
+                                                />
+                                            </a>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">${projectName}</h5>
+                                                <p class="card-text">${projectDescription}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+
+                        projectsContainer.insertAdjacentHTML(
+                            "beforeend",
+                            projectCardHTML
+                        );
+                    });
+                } else {
+                    console.log("No projects found for the user");
+                }
+            } catch (error) {
+                console.error("Error fetching user projects:", error);
             }
-        } catch (error) {
-            console.error("Error fetching user projects:", error);
+        } else {
+            console.error("No username stored in cookie");
         }
-    } else {
-        console.error("No username stored in cookie");
-    }
-});
+    });
+} else {
+    console.log("WHY THE FUCK IS THIS SCRIPT RUNNING?????");
+}
 
 export { db };
