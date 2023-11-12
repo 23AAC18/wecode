@@ -41,6 +41,12 @@ const db = getDatabase();
 document.addEventListener("DOMContentLoaded", async () => {
     if (username) {
         console.log(username);
+        try {
+            const userProjectsRef = ref(db, `users/${username}`);
+            const userProjectsSnapshot = await get(userProjectsRef);
+        } catch (error) {
+            console.error("Error fetching user projects:", error);
+        }
     } else {
         console.error("No username stored in cookie");
     }
