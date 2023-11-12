@@ -46,6 +46,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             const userProjectsRef = ref(db, `users/${username}`);
             const userProjectsSnapshot = await get(userProjectsRef);
+            if (userProjectsSnapshot.exists()) {
+                const userProjects = userProjectsSnapshot.val();
+                const userProjectsData = userProjects.projects;
+                console.log("User Projects Data:", userProjectsData);
+                Object.values(userProjectsData).forEach((valuePair) => {
+                    console.log(valuePair);
         } catch (error) {
             console.error("Error fetching user projects:", error);
         }
