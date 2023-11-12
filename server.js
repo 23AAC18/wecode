@@ -11,6 +11,20 @@ const port = 3000;
 const fs = require("fs");
 const cors = require("cors");
 
+
+const ejs = require("ejs");
+const mongoose = require("mongoose");
+const passport = require("passport");
+const passportLocalMongoose = require("passport-local-mongoose");
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const findOrCreate = require('mongoose-findorcreate');
+app.use(express.static("public"));
+
+
+
+
+
+
 // Serve static files from the root directory
 app.use(express.static(__dirname));
 app.use(express.static(__dirname + "/webpages/CurrentProjects"));
