@@ -30,6 +30,7 @@
             type="module"
             src="/webpages/codingspace/codinglogic.js"
         ></script>
+        <script defer type="module" src="/common/sidebar.js"></script>
     </head>
     <body>
         <div class="header">
@@ -44,49 +45,17 @@
                     class="list-group-item"
                     style="background-color: rgba(0, 0, 0, 0)"
                 >
-                    Home
+                    <button id="home-button" class="sidebar-button">
+                        Home
+                    </button>
                 </li>
                 <li
                     class="list-group-item"
                     style="background-color: rgba(0, 0, 0, 0)"
                 >
-                    Search
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    New Project
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    Current Projects
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    Statistics
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    Folders
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    Active Coders
-                </li>
-                <li
-                    class="list-group-item"
-                    style="background-color: rgba(0, 0, 0, 0)"
-                >
-                    Collabarations
+                    <button id="create-project-button" class="sidebar-button">
+                        Create Project
+                    </button>
                 </li>
             </ul>
         </div>

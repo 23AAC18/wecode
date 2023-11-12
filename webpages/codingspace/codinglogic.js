@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initialize ACE Editor
     const editor = ace.edit("editor");
-    editor.setTheme("ace/theme/cobalt");
+    editor.setTheme("ace/theme/twilight");
     editor.getSession().setMode("ace/mode/javascript");
 
     const codeRef = ref(db, "code");
