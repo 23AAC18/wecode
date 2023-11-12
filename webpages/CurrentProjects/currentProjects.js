@@ -51,7 +51,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const userProjectsData = userProjects.projects;
                 console.log("User Projects Data:", userProjectsData);
                 Object.values(userProjectsData).forEach((valuePair) => {
-                    console.log(valuePair);
+                    const projectName = valuePair.projectName;
+                    const projectDescription = valuePair.projectSummary;
+                    console.log(projectName, projectDescription);
                 });
             } else {
                 console.log("No projects found for the user");
