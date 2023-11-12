@@ -115,11 +115,6 @@
     font-size: 18px;
     padding-top: 15px;
 }
-.project-name-input {
-    font-size: 18px;
-    padding-top: 15px;
-    padding-right: 40px;
-}
 
 #preetham-fuck-you {
     margin-bottom: 10px;
@@ -203,7 +198,7 @@
     height: 50px;
 }
 
-#project-description {
+#project-description-input {
     width: 550px;
     height: 50px;
 }

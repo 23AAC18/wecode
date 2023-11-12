@@ -40,8 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
     createForm.addEventListener("submit", function (event) {
         event.preventDefault();
         const projectName = document.getElementById("project-name-input").value;
+        const projectDescription = document.getElementById(
+            "project-description-input"
+        ).value;
         const project = {
-            id: projectName,
+            projectName: projectName,
+            projectSummary: projectDescription,
         };
         addProjectToDatabase(project);
     });
