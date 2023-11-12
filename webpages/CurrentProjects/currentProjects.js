@@ -4,11 +4,11 @@ import {
     getDatabase,
     ref,
     set,
+    get,
     child,
     update,
     remove,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import {
     setCookie,
     getCookie,
