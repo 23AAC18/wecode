@@ -52,6 +52,10 @@ document.addEventListener("DOMContentLoaded", async () => {
                 console.log("User Projects Data:", userProjectsData);
                 Object.values(userProjectsData).forEach((valuePair) => {
                     console.log(valuePair);
+                });
+            } else {
+                console.log("No projects found for the user");
+            }
         } catch (error) {
             console.error("Error fetching user projects:", error);
         }
