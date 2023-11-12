@@ -39,6 +39,8 @@ const analytics = getAnalytics(app);
 const db = getDatabase();
 
 document.addEventListener("DOMContentLoaded", async () => {
+    const projectsContainer = document.getElementById("projects-container");
+
     if (username) {
         console.log(username);
         try {
