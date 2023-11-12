@@ -58,17 +58,15 @@ if (document.URL.includes("/home")) {
                         const projectName = valuePair.projectName;
                         const projectDescription = valuePair.projectSummary;
                         const projectCardHTML = `
-                            <div class="project-element">
+                            <div class="project-element" id="${projectName}">
                                 <div class="card mb-3" style="max-width: 540px">
                                     <div class="row no-gutters">
                                         <div class="col-md-4">
-                                            <a href="#" onclick="buttonClicked()">
                                                 <img
                                                     src="/Assets/images/demo-landscape.jpg"
                                                     class="card-img holding-image"
                                                     alt="..."
                                                 />
-                                            </a>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="card-body">
