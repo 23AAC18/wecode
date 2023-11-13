@@ -68,31 +68,33 @@ app.use(passport.session());
 
 app.use(express.static("webpages"));
 
-/* passport.use(new GoogleStrategy({
-    clientID: "909967521844-aeudc5tp7rjm58gr4sfjikmt8sf12etk.apps.googleusercontent.com",
-    clientSecret:"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",
-    callbackURL: "http://localhost:3000/auth/google/callback",
-    profileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
-  },
-  function(accessToken, refreshToken, profile, done) {
-    console.log("passport callback started");
-    console.log("User details:", profile);
-    
-  }
-));
+// passport.use(
+//     new GoogleStrategy(
+//         {
+//             clientID:
+//                 "909967521844-aeudc5tp7rjm58gr4sfjikmt8sf12etk.apps.googleusercontent.com",
+//             clientSecret: "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",
+//             callbackURL: "http://localhost:3000/auth/google/callback",
+//             profileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
+//         },
+//         function (accessToken, refreshToken, profile, done) {
+//             console.log("passport callback started");
+//             console.log("User details:", profile);
+//         }
+//     )
+// );
 
-passport.serializeUser((user, done) => {
-    done(null, user);
-  });
-  
-  passport.deserializeUser((obj, done) => {
-    done(null, obj);
-  });
- */
-/* app.get('/one', (req, res) => {
-    res.sendFile('<a href="/auth/google">Sign in with Google</a>');
-  });
- */
+// passport.serializeUser((user, done) => {
+//     done(null, user);
+// });
+
+// passport.deserializeUser((obj, done) => {
+//     done(null, obj);
+// });
+
+// app.get("/one", (req, res) => {
+//     res.sendFile('<a href="/auth/google">Sign in with Google</a>');
+// });
 
 app.get(
     "/auth/google",
@@ -112,22 +114,27 @@ app.get("/auth/failure", (req, res) => {
     res.send("Wrong credentials!");
 });
 
-/* app.get('/protected', isLoggedIn, (req, res) =>{
-  res.send('Hello ${req.user.displayName}');
-});
- */
+// app.get("/protected", isLoggedIn, (req, res) => {
+//     res.send("Hello ${req.user.displayName}");
+// });
 
-/* app.get('/currentProjects/currentProjects.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'webpages', 'currentProjects', 'currentProjects.html'));
-  }); */
+// app.get("/currentProjects/currentProjects.html", (req, res) => {
+//     res.sendFile(
+//         path.join(
+//             __dirname,
+//             "webpages",
+//             "currentProjects",
+//             "currentProjects.html"
+//         )
+//     );
+// });
 
-/* 
-  function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/');
-} */
+// function ensureAuthenticated(req, res, next) {
+//     if (req.isAuthenticated()) {
+//         return next();
+//     }
+//     res.redirect("/");
+// }
 
 app.get("/logout", (req, res) => {
     req.logout();
