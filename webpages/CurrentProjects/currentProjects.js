@@ -57,7 +57,9 @@ if (document.URL.includes("/home")) {
                     Object.values(userProjectsData).forEach((valuePair) => {
                         const projectName = valuePair.projectName;
                         const projectDescription = valuePair.projectSummary;
+
                         const projectCardHTML = `
+                        <a onclick="redirectionFunction()">
                             <div class="project-element" id="${projectName}">
                                 <div class="card mb-3" style="max-width: 540px">
                                     <div class="row no-gutters">
@@ -77,6 +79,7 @@ if (document.URL.includes("/home")) {
                                     </div>
                                 </div>
                             </div>
+                        </a>
                         `;
 
                         projectsContainer.insertAdjacentHTML(
