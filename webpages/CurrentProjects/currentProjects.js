@@ -59,7 +59,7 @@ if (document.URL.includes("/home")) {
                         const projectDescription = valuePair.projectSummary;
 
                         const projectCardHTML = `
-                        <a onclick="redirectionFunction()">
+                        <a onclick="window.location.href= '${username}-${projectName}'">
                             <div class="project-element" id="${projectName}">
                                 <div class="card mb-3" style="max-width: 540px">
                                     <div class="row no-gutters">
