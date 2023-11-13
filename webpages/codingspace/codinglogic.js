@@ -144,7 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
             // Restore the original console.log
             console.log = originalConsoleLog;
         }
-
         // Return the captured console output
         return consoleLogMessages.join("\n");
     }
