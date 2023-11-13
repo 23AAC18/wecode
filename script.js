@@ -1,69 +1,27 @@
-import {
-    setCookie,
-    getCookie,
-    checkUsernameChange,
-    updateUsername,
-} from "./cookie.js";
+//Write Client Side Code for both Registration and Login Here
 
-document.addEventListener("DOMContentLoaded", function () {
-    const registrationForm = document.getElementById("registration-field");
+//This is the Page Connected to index.html(Landing Page)
 
-    registrationForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const username = document
-            .getElementById("registration-username")
-            .value.trim();
-        const password = document
-            .getElementById("registration-password")
-            .value.trim();
-
-        // Send a POST request to your Express.js server
-        fetch("/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ username, password }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                // Handle the response from the server (e.g., show a success message)
-                alert(data.message);
-                // Clear the input fields
-                document.getElementById("registration-username").value = "";
-                document.getElementById("registration-password").value = "";
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
+/* /* function onSignIn(googleUser) { */
+    // Retrieve user details
+    /* const profile = googleUser.getBasicProfile();
+    const id_token = googleUser.getAuthResponse().id_token;
+    fetch('/auth/google', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id_token: id_token }),
+    })
+    .then(response => {
+        if (response.ok) {
+            // Authentication successful, handle accordingly
+            window.location.href = '/currentProjects/currentProjects.html'; // Redirect to dashboard or other page
+        } else {
+            console.error('Authentication failed');
+        }
+    })
+    .catch(error => {
+        console.error('Error during authentication:', error);
     });
-
-    const loginForm = document.getElementById("login-field");
-
-    loginForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const username = document.getElementById("login-username").value.trim();
-        const password = document.getElementById("login-password").value.trim();
-
-        // Send a GET request to check login credentials
-        fetch(`/login?username=${username}&password=${password}`)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.message === "Login successful") {
-                    alert("Login successful");
-                    updateUsername(username);
-                    // redirect to the url if success
-                    window.location.replace(data.url);
-                } else {
-                    alert("Invalid username or password");
-                }
-                document.getElementById("login-username").value = "";
-                document.getElementById("login-password").value = "";
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-            });
-    });
-});
+} */

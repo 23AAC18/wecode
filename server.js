@@ -11,7 +11,16 @@ const port = 3000;
 const fs = require("fs");
 const cors = require("cors");
 
+const path = require('path');
+const ejs = require("ejs");
+const passport = require("passport");
+const GoogleStrategy = require('passport-google-oauth20').Strategy
+
+require("./auth");
+
+
 // Serve static files from the root directory
+
 app.use(express.static(__dirname));
 app.use(express.static(__dirname + "/webpages/CurrentProjects"));
 app.use(express.static(__dirname + "/webpages/codingspace"));
@@ -24,81 +33,115 @@ app.use(cors());
 //Utilizing bodyParser
 app.use(bodyParser.json());
 
+
+function isLoggedIn(req, res, next) {
+  req.user ? next() : res.sendStatus(401);
+}
+
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 
-app.get("/home", (req, res) => {
+app.get("/home",isLoggedIn, (req, res) => {
     res.sendFile(__dirname + "/webpages/CurrentProjects/currentProjects.html");
 });
 
 app.get("/createProject",(req, res) => {
-
     res.sendFile(__dirname + "/webpages/createproject/page2.html");
 });
 
-app.get("/getUsername", (req, res) => {
-    console.log(req.session.username);
-    const username = req.session.username;
-    res.json({ username });
-});
 
-server.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+// Connect to the database here
 
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "admin",
-    password: "0000",
-    database: "userauth",
-});
+//Write Server Side Code for Registration here
 
-// Connect to the database
-db.connect((err) => {
-    if (err) {
-        console.error("Error connecting to MySQL:", err);
-    } else {
-        console.log(`Connected to MySQL database`);
+//Write Server Side Code for Login Here
+app.use(express.json());
+
+app.use(session({
+    secret: "Our little secret.",
+    resave: false,
+    saveUninitialized: false,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(express.static('webpages'));
+
+/* passport.use(new GoogleStrategy({
+    clientID: "909967521844-aeudc5tp7rjm58gr4sfjikmt8sf12etk.apps.googleusercontent.com",
+    clientSecret:"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",
+    callbackURL: "http://localhost:3000/auth/google/callback",
+    profileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    console.log("passport callback started");
+    console.log("User details:", profile);
+    
+  }
+));
+
+passport.serializeUser((user, done) => {
+    done(null, user);
+  });
+  
+  passport.deserializeUser((obj, done) => {
+    done(null, obj);
+  });
+ */
+/* app.get('/one', (req, res) => {
+    res.sendFile('<a href="/auth/google">Sign in with Google</a>');
+  });
+ */
+
+app.get("/auth/google",
+  passport.authenticate('google', { scope: ['email', 'profile'] })
+);
+
+app.get("/auth/google/callback",
+  passport.authenticate('google', { failureRedirect: "/auth/failure"}),
+  (req, res)=>{
+    // Successful authentication, redirect to currentProjects.html
+    res.send("/webpages/CurrentProjects/currentProjects.html");
+  }
+);
+
+app.get("/auth/failure", (req, res)=>{
+  res.send('Wrong credentials!');
+})
+
+/* app.get('/protected', isLoggedIn, (req, res) =>{
+  res.send('Hello ${req.user.displayName}');
+});
+ */
+
+  /* app.get('/currentProjects/currentProjects.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'webpages', 'currentProjects', 'currentProjects.html'));
+  }); */
+
+ /* 
+  function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
     }
-});
+    res.redirect('/');
+} */
+  
 
-//Register User
-app.post("/register", (req, res) => {
-    const { username, password } = req.body;
-    const sql = "INSERT INTO authdetails (username, password) VALUES (?, ?)";
-    db.query(sql, [username, password], (err, results) => {
-        if (err) {
-            console.error("Error inserting user:", err);
-            res.status(500).json({ error: "Database error" });
-        } else {
-            res.json({ message: "User inserted successfully" });
-        }
-    });
-});
+  app.get("/logout", (req, res) => {
+      req.logout();
+      res.send('Goodbye!');
+      console.log("User logged out");
+  });
 
-//Log Into User Account
-app.get("/login", (req, res) => {
-    const { username, password } = req.query;
-    const sql = "SELECT * FROM authdetails WHERE username = ? AND password = ?";
-    db.query(sql, [username, password], (err, results) => {
-        console.log(results);
-        if (err) {
-            console.error("Error searching for user:", err);
-            res.status(500).json({ error: "Database error" });
-        } else {
-            if (results.length > 0) {
-                res.json({
-                    message: "Login successful",
-                    url: "/home",
-                });
-                // checkUsernameChange();
-            } else {
-                res.json({ message: "Invalid username or password" });
-            }
-        }
-    });
-});
+  server.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+  });
+    
+
+
+
 
 app.get("/:roomName", (req, res) => {
     const roomName = req.params.roomName;
