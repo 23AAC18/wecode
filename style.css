@@ -113,3 +113,25 @@
     margin-top: -60px;
     margin-left: -50px;
 }
+.button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    top: 10%;
+    left: 79%;
+    bottom: 10%;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.button:hover {
+    opacity: 92%;
+}
