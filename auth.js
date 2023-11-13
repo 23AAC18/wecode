@@ -7,13 +7,12 @@ passport.use(new GoogleStrategy({
     clientSecret:"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",
     callbackURL: "http://localhost:3000/auth/google/callback",
     profileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
-    passReqToCallback: true
   },
-  function(accessToken, refreshToken, profile, cb) {
+  (accessToken, refreshToken, profile, cb) => {
     console.log('Passport Callback Function Started');
     console.log(profile);
     
-  return cb(null, profile);
+    
   }
 
 ));

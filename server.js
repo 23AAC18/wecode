@@ -27,6 +27,7 @@ function isLoggedIn(req, res, next) {
 
 app.use(express.static("public"));
 
+
 // Serve static files from the root directory
 
 app.use(express.static(__dirname));
@@ -108,7 +109,7 @@ app.get("/auth/google/callback",
   passport.authenticate('google', { failureRedirect: "/auth/failure"}),
   (req, res)=>{
     // Successful authentication, redirect to currentProjects.html
-    res.redirect("/home");
+    res.send("/webpages/CurrentProjects/currentProjects.html");
   }
 );
 
@@ -137,6 +138,7 @@ app.get("/auth/failure", (req, res)=>{
   app.get("/logout", (req, res) => {
       req.logout();
       res.send('Goodbye!');
+      console.log("User logged out");
   });
 
   server.listen(port, () => {
