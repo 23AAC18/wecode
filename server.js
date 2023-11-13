@@ -16,16 +16,7 @@ const ejs = require("ejs");
 const passport = require("passport");
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 
-
-
-
 require("./auth");
-
-function isLoggedIn(req, res, next) {
-  req.user ? next() : res.sendStatus(401);
-}
-
-app.use(express.static("public"));
 
 
 // Serve static files from the root directory
@@ -43,6 +34,9 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
+function isLoggedIn(req, res, next) {
+  req.user ? next() : res.sendStatus(401);
+}
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
