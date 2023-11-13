@@ -3,8 +3,8 @@
 //This is the Page Connected to index.html(Landing Page)
 
 /* /* function onSignIn(googleUser) { */
-    // Retrieve user details
-    /* const profile = googleUser.getBasicProfile();
+// Retrieve user details
+/* const profile = googleUser.getBasicProfile();
     const id_token = googleUser.getAuthResponse().id_token;
     fetch('/auth/google', {
         method: 'POST',

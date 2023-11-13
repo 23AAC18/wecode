@@ -105,11 +105,11 @@
     width: 40%;
     margin: auto auto auto 30%;
 }
-.g-signin2{
+.g-signin2 {
     position: absolute;
     top: 10%;
     left: 79%;
     bottom: 10%;
-    margin-top:-60px;
+    margin-top: -60px;
     margin-left: -50px;
 }
