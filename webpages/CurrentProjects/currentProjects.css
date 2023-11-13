@@ -111,3 +111,7 @@
     width: 100%;
     border: none;
 }
+
+.project-element {
+    cursor: pointer;
+}
