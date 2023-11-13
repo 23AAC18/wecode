@@ -97,37 +97,30 @@
     padding-left: 5px;
 }
 .project-details {
-    padding: 130px 0px 0px 180px;
+    padding: 80px 0px 0px 215px;
     width: 100%;
     justify-content: center;
+    font-family: "Dosis", sans-serif;
 }
 .project-name {
-    font-size: 38px;
+    font-size: 50px;
     font-style: bold;
     margin: 0;
-    padding-top: 60px;
+    padding-top: 40px;
 }
 .center-info {
-    height: 100px;
     text-align: center;
 }
 .details-text {
     font-size: 18px;
-    font-family: bold;
     padding-top: 15px;
 }
-.project-name-input {
-    font-size: 18px;
-    font-family: bold;
-    padding-top: 15px;
-    padding-right: 40px;
-}
-.project-creating-details {
-    height: 400px;
-}
-.input-group {
+
+#preetham-fuck-you {
     margin-bottom: 10px;
     font-size: 16px;
+    padding-top: 40px;
+    padding-left: 330px;
 }
 .input-group label {
     display: block;
@@ -140,33 +133,11 @@
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-.input-group {
-    padding-top: 80px;
-    padding-left: 380px;
+
+#project-buttons {
+    padding-left: 22.5%;
 }
-.input-group-1 {
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-.input-group-1 label {
-    display: block;
-    margin-bottom: 5px;
-}
-.input-group-1 input,
-.input-group-1 textarea {
-    width: 300px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-.input-group-1 {
-    padding-left: 380px;
-    padding-top: 20px;
-}
-.create-button-2 {
-    padding-left: 500px;
-}
-.create-button-inner-2 {
+#create-button {
     background-color: #111;
     color: #ddd;
     border-radius: 8px;
@@ -177,17 +148,7 @@
     border: solid;
     margin-top: 20px;
 }
-.clear-button {
-    background-color: white;
-    color: #000000;
-    border-radius: 8px;
-    padding-bottom: 15px;
-    padding-top: 15px;
-    padding-right: 50px;
-    padding-left: 50px;
-    margin-right: 10px;
-    border: solid;
-}
+
 .search-bar {
     width: 300px;
     padding: 5px;
@@ -212,8 +173,7 @@
         background: #555;
     }
 }
-.language-selection {
-    padding-left: 380px;
+#language-selection {
     padding-top: 20px;
     font-size: 16px;
 }
@@ -238,8 +198,7 @@
     height: 50px;
 }
 
-#project-description {
+#project-description-input {
     width: 550px;
     height: 50px;
 }
-

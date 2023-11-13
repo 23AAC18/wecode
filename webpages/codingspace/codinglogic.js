@@ -14,25 +14,19 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 
+import { db } from "../CurrentProjects/currentProjects.js";
+
+import { getCookie } from "/cookie.js";
+
+const username = getCookie("username");
+if (username) {
+    console.log("Username from codinglogic.js:", username);
+} else {
+    console.log("No username stored in the cookie");
+}
 const editor = ace.edit("editor");
 editor.setTheme("ace/theme/cobalt");
 editor.getSession().setMode("ace/mode/javascript");
-
-const firebaseConfig = {
-    apiKey: "AIzaSyANafOMY9kojKKxBa9hwKrXAH6u4uTXhcU",
-    authDomain: "wecode-91084.firebaseapp.com",
-    databaseURL:
-        "https://wecode-91084-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "wecode-91084",
-    storageBucket: "wecode-91084.appspot.com",
-    messagingSenderId: "107117565088",
-    appId: "1:107117565088:web:7c3d73d23bf094ecdca5c5",
-    measurementId: "G-S8SGHVTC2Z",
-};
-
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getDatabase();
 
 const codeRef = ref(db, "code");
 
@@ -46,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initialize ACE Editor
     const editor = ace.edit("editor");
-    editor.setTheme("ace/theme/cobalt");
+    editor.setTheme("ace/theme/twilight");
     editor.getSession().setMode("ace/mode/javascript");
 
     const codeRef = ref(db, "code");
