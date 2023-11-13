@@ -10,13 +10,26 @@ const io = socketIo(server);
 const port = 3000;
 const fs = require("fs");
 const cors = require("cors");
-
+const passport = require('./auth');
 const path = require("path");
 const ejs = require("ejs");
-const passport = require("passport");
+
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
-require("./auth");
+
+
+//session
+app.use(
+    session({
+        secret: "Our little secret.",
+        resave: true,
+        saveUninitialized: true,
+    })
+);
+
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Serve static files from the root directory
 
@@ -29,6 +42,9 @@ app.use(
 );
 app.use(cors());
 
+app.use(express.json());
+app.use(express.static("webpages"));
+
 //Utilizing bodyParser
 app.use(bodyParser.json());
 
@@ -39,6 +55,20 @@ function isLoggedIn(req, res, next) {
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
+
+app.get(
+    "/auth/google",
+    passport.authenticate("google", { scope: ["email", "profile"] })
+);
+
+app.get(
+    "/auth/google/callback",
+    passport.authenticate("google", { failureRedirect: "/auth/failure" }),
+    (req, res) => {
+        // Successful authentication, redirect to currentProjects.html
+        res.redirect("/home");
+    }
+);
 
 app.get("/home", isLoggedIn, (req, res) => {
     res.sendFile(__dirname + "/webpages/CurrentProjects/currentProjects.html");
@@ -53,20 +83,8 @@ app.get("/createProject", (req, res) => {
 //Write Server Side Code for Registration here
 
 //Write Server Side Code for Login Here
-app.use(express.json());
 
-app.use(
-    session({
-        secret: "Our little secret.",
-        resave: false,
-        saveUninitialized: false,
-    })
-);
 
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.use(express.static("webpages"));
 
 // passport.use(
 //     new GoogleStrategy(
@@ -96,19 +114,7 @@ app.use(express.static("webpages"));
 //     res.sendFile('<a href="/auth/google">Sign in with Google</a>');
 // });
 
-app.get(
-    "/auth/google",
-    passport.authenticate("google", { scope: ["email", "profile"] })
-);
 
-app.get(
-    "/auth/google/callback",
-    passport.authenticate("google", { failureRedirect: "/auth/failure" }),
-    (req, res) => {
-        // Successful authentication, redirect to currentProjects.html
-        res.send("/webpages/CurrentProjects/currentProjects.html");
-    }
-);
 
 app.get("/auth/failure", (req, res) => {
     res.send("Wrong credentials!");
