@@ -32,8 +32,7 @@ app.get("/home", (req, res) => {
     res.sendFile(__dirname + "/webpages/CurrentProjects/currentProjects.html");
 });
 
-app.get("/createProject",(req, res) => {
-
+app.get("/createProject", (req, res) => {
     res.sendFile(__dirname + "/webpages/createproject/page2.html");
 });
 
