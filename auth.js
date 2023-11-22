@@ -13,7 +13,6 @@ passport.use(
         (accessToken, refreshToken, profile, done) => {
             console.log("Passport Callback Function Started");
             console.log(profile);
-
             return done(null, "/home");
         }
     )

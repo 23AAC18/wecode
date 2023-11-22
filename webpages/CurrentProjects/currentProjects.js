@@ -27,6 +27,8 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getDatabase();
 
+const username = "Alexei";
+
 if (document.URL.includes("/home")) {
     document.addEventListener("DOMContentLoaded", async () => {
         const projectsContainer = document.getElementById("projects-container");
