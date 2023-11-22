@@ -1,4 +1,3 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
 import {
@@ -10,17 +9,6 @@ import {
     update,
     remove,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-import {
-    setCookie,
-    getCookie,
-    checkUsernameChange,
-    updateUsername,
-} from "../../cookie.js";
-
-setInterval(checkUsernameChange, 10 * 60 * 1000); // Check username Change every 10 mins
-
-// Get username from cookie stored in browser
-const username = getCookie("username");
 
 //Firebase Setup
 const firebaseConfig = {
@@ -100,4 +88,3 @@ if (document.URL.includes("/home")) {
 }
 
 export { db };
-

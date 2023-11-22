@@ -14,7 +14,7 @@ passport.use(
             console.log("Passport Callback Function Started");
             console.log(profile);
 
-            return done(null, "/webpages/CurrentProjects/currentProjects.html");
+            return done(null, "/home");
         }
     )
 );
