@@ -1,4 +1,3 @@
-
 import { getCookie } from "../../cookie.js";
 import { db } from "../CurrentProjects/currentProjects.js";
 import {
@@ -51,4 +50,3 @@ document.addEventListener("DOMContentLoaded", () => {
         addProjectToDatabase(project);
     });
 });
-

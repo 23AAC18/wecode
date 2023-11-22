@@ -1,7 +1,3 @@
-//This is the page connected to coding.html
-
-//Implement code such that logged in username is accessible on this page.
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
 import {
@@ -13,7 +9,6 @@ import {
     remove,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-
 import { db } from "../CurrentProjects/currentProjects.js";
 
 import { getCookie } from "/cookie.js";
@@ -24,6 +19,9 @@ if (username) {
 } else {
     console.log("No username stored in the cookie");
 }
+
+// Continue with the rest of your code
+
 const editor = ace.edit("editor");
 editor.setTheme("ace/theme/cobalt");
 editor.getSession().setMode("ace/mode/javascript");
@@ -144,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Restore the original console.log
             console.log = originalConsoleLog;
         }
+
         // Return the captured console output
         return consoleLogMessages.join("\n");
     }
