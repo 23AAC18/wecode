@@ -37,7 +37,7 @@
     font-weight: 600;
     justify-content: center;
     line-height: 1.25;
-    margin: 20px 10px 0px 0px;
+    margin: 20px 20px 0px 0px;
     min-height: 3rem;
     padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
     position: relative;
@@ -47,7 +47,7 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     vertical-align: baseline;
-    width: 100px;
+    width: 180px;
 }
 
 .home-page-button-element:hover,
@@ -104,4 +104,34 @@
 .enter-stuff-here {
     width: 40%;
     margin: auto auto auto 30%;
+}
+.g-signin2 {
+    position: absolute;
+    top: 10%;
+    left: 79%;
+    bottom: 10%;
+    margin-top: -60px;
+    margin-left: -50px;
+}
+.button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    top: 10%;
+    left: 79%;
+    bottom: 10%;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.button:hover {
+    opacity: 92%;
 }
