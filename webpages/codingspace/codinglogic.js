@@ -10,8 +10,10 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { db } from "../CurrentProjects/currentProjects.js";
+import { getCookie } from "../../common/getCookie.js";
 
-const username = Alexei;
+const username = getCookie("username");
+const userID = getCookie("userID");
 
 if (username) {
     console.log("Username from codinglogic.js:", username);

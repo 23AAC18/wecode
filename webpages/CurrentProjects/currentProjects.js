@@ -42,6 +42,9 @@ async function fetchUserProfile() {
         console.log(username);
         console.log(userID);
 
+        document.cookie = `username=${username}; path=/`;
+        document.cookie = `userID=${userID}; path=/`;
+
         if (document.URL.includes("/home")) {
             console.log("Data from async FetchUserData");
             console.log(username);
