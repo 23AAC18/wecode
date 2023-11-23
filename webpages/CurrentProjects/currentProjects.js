@@ -58,6 +58,7 @@ async function fetchUserProfile() {
     }
 }
 
+
 async function displayUserProjects() {
     const projectsContainer = document.getElementById("projects-container");
     console.log(projectsContainer);
@@ -77,30 +78,34 @@ async function displayUserProjects() {
                 console.log("User Projects Data:", userProjectsData);
 
                 Object.values(userProjectsData).forEach((valuePair) => {
-                    const projectName = valuePair.projectName;
-                    const projectDescription = valuePair.projectSummary;
+                        const projectName = valuePair.projectName;
+                        const projectDescription = valuePair.projectSummary;
 
-                    const projectCardHTML = `
-                        <div class="project-element" id="${projectName}">
-                            <div class="card mb-3" style="max-width: 540px">
-                                <div class="row no-gutters">
-                                    <div class="col-md-4">
-                                        <img
-                                            src="/Assets/images/demo-landscape.jpg"
-                                            class="card-img holding-image"
-                                            alt="..."
-                                        />
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                            <h5 class="card-title">${projectName}</h5>
-                                            <p class="card-text">${projectDescription}</p>
+                        const projectCardHTML = `
+                        <a onclick="window.location.href= '${username}-${projectName}'">
+                            <div class="project-element" id="${projectName}">
+                                <div class="card mb-3" style="max-width: 540px">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-4">
+                                                <img
+                                                    src="/Assets/images/demo-landscape.jpg"
+                                                    class="card-img holding-image"
+                                                    alt="..."
+                                                />
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h5 class="card-title">${projectName}</h5>
+                                                <p class="card-text">${projectDescription}</p>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    `;
+
+                        </a>
+
 
                     projectsContainer.insertAdjacentHTML(
                         "beforeend",
