@@ -1,6 +1,8 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
+let profileData;
+
 passport.use(
     new GoogleStrategy(
         {
@@ -13,7 +15,7 @@ passport.use(
         (accessToken, refreshToken, profile, done) => {
             console.log("Passport Callback Function Started");
             console.log(profile);
-            module.exports = profile;
+            profileData = profile;
             return done(null, "/profile");
         }
     )
@@ -26,4 +28,7 @@ passport.serializeUser(function (profile, done) {
 passport.deserializeUser(function (obj, done) {
     done(null, obj);
 });
-module.exports = passport;
+module.exports.passport = passport;
+module.exports.getProfile = function () {
+    return profileData;
+};

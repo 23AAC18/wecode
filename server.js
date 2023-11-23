@@ -10,7 +10,7 @@ const io = socketIo(server);
 const port = 3000;
 const fs = require("fs");
 const cors = require("cors");
-const passport = require("./auth");
+const { passport, getProfile } = require("./auth");
 const path = require("path");
 const ejs = require("ejs");
 
@@ -69,6 +69,7 @@ app.get(
 
 app.get("/home", isLoggedIn, (req, res) => {
     res.sendFile(__dirname + "/webpages/CurrentProjects/currentProjects.html");
+    console.log(getProfile().displayName);
 });
 
 app.get("/createProject", (req, res) => {
@@ -83,10 +84,6 @@ app.get("/logout", (req, res) => {
     req.logout();
     res.send("Goodbye!");
     console.log("User logged out");
-});
-
-server.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
 });
 
 app.get("/:roomName", (req, res) => {
@@ -117,4 +114,13 @@ io.on("connection", (socket) => {
     socket.on("disconnect", () => {
         console.log("A user disconnected");
     });
+});
+
+app.get("/getProfile", (req, res) => {
+    const profile = getProfile();
+    res.json(profile);
+});
+
+server.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
