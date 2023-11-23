@@ -13,6 +13,7 @@ passport.use(
         (accessToken, refreshToken, profile, done) => {
             console.log("Passport Callback Function Started");
             console.log(profile);
+            module.exports = profile;
             return done(null, "/profile");
         }
     )
@@ -25,5 +26,4 @@ passport.serializeUser(function (profile, done) {
 passport.deserializeUser(function (obj, done) {
     done(null, obj);
 });
-
 module.exports = passport;
