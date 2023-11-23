@@ -10,7 +10,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { db } from "../CurrentProjects/currentProjects.js";
-
 import { getCookie } from "/cookie.js";
 
 const username = getCookie("username");
