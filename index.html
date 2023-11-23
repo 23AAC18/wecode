@@ -3,6 +3,15 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="google-signin-client_id"
+            content="909967521844-aeudc5tp7rjm58gr4sfjikmt8sf12etk.apps.googleusercontent.com"
+        />
+        <script
+            src="https://apis.google.com/js/platform.js"
+            async
+            defer
+        ></script>
         <title>WeCode</title>
         <link rel="stylesheet" href="/style.css" />
         <link
@@ -39,82 +48,10 @@
                 </div>
             </div>
             <div class="home-page-buttons">
-                <button
-                    id="header-signup"
-                    class="home-page-button-element"
-                    role="button"
-                >
-                    <span> Sign Up </span>
-                </button>
-                <button
-                    id="header-login"
-                    class="home-page-button-element"
-                    role="button"
-                >
-                    <span> Log In </span>
-                </button>
+                <a href="/auth/google" class="home-page-button-element">
+                    Sign in with Google
+                </a>
             </div>
-        </div>
-        <div id="input-box">
-            <form id="registration-field" class="input-field">
-                <div class="enter-stuff-here">
-                    <label>Username : </label>
-                    <input
-                        type="text"
-                        placeholder="Enter Username"
-                        id="registration-username"
-                        name="username"
-                        required
-                    />
-                    <br>
-                    <label>Password : </label>
-                    <input
-                        type="password"
-                        placeholder="Enter Password"
-                        id="registration-password"
-                        name="password"
-                        required
-                    />
-                </div>
-                <button
-                    id="home-page-signup"
-                    class="home-page-button-element auth-button"
-                    role="button"
-                    type="submit"
-                >
-                    <span> Sign Up </span>
-                </button>
-            </form>
-            <form id="login-field" class="input-field">
-                <div class="enter-stuff-here">
-                    <label>Username : </label>
-                    <input
-                        type="text"
-                        placeholder="Enter Username"
-                        id="login-username"
-                        name="username"
-                        required
-                    />
-                    <br>
-                    <label>Password : </label>
-                    <input
-                        type="password"
-                        placeholder="Enter Password"
-                        id="login-password"
-                        name="password"
-                        required
-                    />
-                </div>
-
-                <button
-                    id="home-page-login"
-                    class="home-page-button-element auth-button"
-                    role="button"
-                    type="submit"
-                >
-                    <span> Log In </span>
-                </button>
-            </form>
         </div>
         <div id="info-bar">information</div>
         <div class="about-us">
@@ -152,7 +89,5 @@
                 </ul>
             </div>
         </div>
-        <script defer src="/style.js"></script>
-        <script defer type="module" src="/script.js"></script>
     </body>
 </html>

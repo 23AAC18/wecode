@@ -9,17 +9,6 @@ import {
     update,
     remove,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-import {
-    setCookie,
-    getCookie,
-    checkUsernameChange,
-    updateUsername,
-} from "../../cookie.js";
-
-setInterval(checkUsernameChange, 10 * 60 * 1000); // Check username Change every 10 mins
-
-// Get username from cookie stored in browser
-const username = getCookie("username");
 
 //Firebase Setup
 const firebaseConfig = {
@@ -37,24 +26,58 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getDatabase();
+let userProfile;
+let username;
+let userID;
 
-if (document.URL.includes("/home")) {
-    document.addEventListener("DOMContentLoaded", async () => {
-        const projectsContainer = document.getElementById("projects-container");
+async function fetchUserProfile() {
+    try {
+        const response = await fetch("/getProfile");
+        const profile = await response.json();
 
-        console.log(projectsContainer);
+        console.log("Profile Data:", profile);
+        userProfile = profile;
+        username = userProfile.displayName;
+        userID = userProfile.id;
+        console.log(username);
+        console.log(userID);
 
-        if (username) {
+        document.cookie = `username=${username}; path=/`;
+        document.cookie = `userID=${userID}; path=/`;
+
+        if (document.URL.includes("/home")) {
+            console.log("Data from async FetchUserData");
             console.log(username);
-            try {
-                const userProjectsRef = ref(db, `users/${username}`);
-                const userProjectsSnapshot = await get(userProjectsRef);
-                if (userProjectsSnapshot.exists()) {
-                    const userProjects = userProjectsSnapshot.val();
-                    const userProjectsData = userProjects.projects;
-                    console.log("User Projects Data:", userProjectsData);
+            console.log(userID);
+            await displayUserProjects();
+        } else {
+            console.log("WHY THE FUCK IS THIS SCRIPT RUNNING?????");
+        }
+    } catch (error) {
+        console.error("Error fetching profile:", error);
+    }
+}
 
-                    Object.values(userProjectsData).forEach((valuePair) => {
+
+async function displayUserProjects() {
+    const projectsContainer = document.getElementById("projects-container");
+    console.log(projectsContainer);
+
+    if (username) {
+        console.log("Data from async DisplayUserProjects");
+        console.log(username);
+        console.log(userID);
+
+        try {
+            const userProjectsRef = ref(db, `users/${username}`);
+            const userProjectsSnapshot = await get(userProjectsRef);
+
+            if (userProjectsSnapshot.exists()) {
+                const userProjects = userProjectsSnapshot.val();
+                const userProjectsData = userProjects.projects;
+                console.log("User Projects Data:", userProjectsData);
+
+                Object.values(userProjectsData).forEach((valuePair) => {
                         const projectName = valuePair.projectName;
                         const projectDescription = valuePair.projectSummary;
 
@@ -75,30 +98,31 @@ if (document.URL.includes("/home")) {
                                                 <h5 class="card-title">${projectName}</h5>
                                                 <p class="card-text">${projectDescription}</p>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </a>
-                        `;
 
-                        projectsContainer.insertAdjacentHTML(
-                            "beforeend",
-                            projectCardHTML
-                        );
-                    });
-                } else {
-                    console.log("No projects found for the user");
-                }
-            } catch (error) {
-                console.error("Error fetching user projects:", error);
+                        </a>
+
+
+                    projectsContainer.insertAdjacentHTML(
+                        "beforeend",
+                        projectCardHTML
+                    );
+                });
+            } else {
+                console.log("No projects found for the user");
             }
-        } else {
-            console.error("No username stored in cookie");
+        } catch (error) {
+            console.error("Error fetching user projects:", error);
         }
-    });
-} else {
-    console.log("WHY THE FUCK IS THIS SCRIPT RUNNING?????");
+    } else {
+        console.error("No username stored in cookie");
+    }
 }
+
+fetchUserProfile();
 
 export { db };

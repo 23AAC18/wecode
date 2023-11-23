@@ -10,18 +10,16 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { db } from "../CurrentProjects/currentProjects.js";
-
-import { getCookie } from "/cookie.js";
+import { getCookie } from "../../common/getCookie.js";
 
 const username = getCookie("username");
+const userID = getCookie("userID");
+
 if (username) {
     console.log("Username from codinglogic.js:", username);
 } else {
     console.log("No username stored in the cookie");
 }
-
-// Continue with the rest of your code
-
 const editor = ace.edit("editor");
 editor.setTheme("ace/theme/cobalt");
 editor.getSession().setMode("ace/mode/javascript");
@@ -142,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
             // Restore the original console.log
             console.log = originalConsoleLog;
         }
-
         // Return the captured console output
         return consoleLogMessages.join("\n");
     }

@@ -1,18 +1,13 @@
-import { getCookie } from "../../cookie.js";
 import { db } from "../CurrentProjects/currentProjects.js";
 import {
     ref,
     set,
     get,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+import { getCookie } from "../../common/getCookie.js";
 
 const username = getCookie("username");
-
-if (username) {
-    console.log("Username from createproject.js:", username);
-} else {
-    console.log("No username stored in the cookie");
-}
+const userID = getCookie("userID");
 
 const projectsRef = ref(db, `users/${username}/projects`);
 
