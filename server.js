@@ -31,6 +31,7 @@ app.use(passport.session());
 // Serve static files from the root directory
 
 app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "webpages")));
 app.use(express.static(__dirname + "/webpages/CurrentProjects"));
 app.use(express.static(__dirname + "/webpages/codingspace"));
 app.use(
@@ -86,6 +87,22 @@ app.get("/logout", (req, res) => {
     console.log("User logged out");
 });
 
+app.get("/getProfile", (req, res) => {
+    try {
+        console.log(getProfile().displayName);
+        const profile = getProfile();
+        console.log(profile);
+        if (!profile) {
+            throw new Error("Profile not found");
+        }
+        console.log(profile);
+        res.json(profile);
+    } catch (error) {
+        console.error("Error fetching profile:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
 app.get("/:roomName", (req, res) => {
     const roomName = req.params.roomName;
     const filePath = __dirname + `/webpages/codingspace/coding.html`;
@@ -114,11 +131,6 @@ io.on("connection", (socket) => {
     socket.on("disconnect", () => {
         console.log("A user disconnected");
     });
-});
-
-app.get("/getProfile", (req, res) => {
-    const profile = getProfile();
-    res.json(profile);
 });
 
 server.listen(port, () => {
