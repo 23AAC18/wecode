@@ -9,7 +9,7 @@ import { getCookie } from "../../common/getCookie.js";
 const username = getCookie("username");
 const userID = getCookie("userID");
 
-const projectsRef = ref(db, `users/${username}/projects`);
+const projectsRef = ref(db, `users/${userID}-${username}/projects`);
 
 document.addEventListener("DOMContentLoaded", () => {
     const createForm = document.getElementById("form-field");

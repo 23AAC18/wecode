@@ -58,7 +58,6 @@ async function fetchUserProfile() {
     }
 }
 
-
 async function displayUserProjects() {
     const projectsContainer = document.getElementById("projects-container");
     console.log(projectsContainer);
@@ -69,7 +68,7 @@ async function displayUserProjects() {
         console.log(userID);
 
         try {
-            const userProjectsRef = ref(db, `users/${username}`);
+            const userProjectsRef = ref(db, `users/${userID}-${username}`);
             const userProjectsSnapshot = await get(userProjectsRef);
 
             if (userProjectsSnapshot.exists()) {
@@ -78,11 +77,11 @@ async function displayUserProjects() {
                 console.log("User Projects Data:", userProjectsData);
 
                 Object.values(userProjectsData).forEach((valuePair) => {
-                        const projectName = valuePair.projectName;
-                        const projectDescription = valuePair.projectSummary;
+                    const projectName = valuePair.projectName;
+                    const projectDescription = valuePair.projectSummary;
 
-                        const projectCardHTML = `
-                        <a onclick="window.location.href= '${username}-${projectName}'">
+                    const projectCardHTML = `
+                        <a onclick="window.location.href= '${userID}-${projectName}'">
                             <div class="project-element" id="${projectName}">
                                 <div class="card mb-3" style="max-width: 540px">
                                     <div class="row no-gutters">
@@ -104,8 +103,7 @@ async function displayUserProjects() {
                                 </div>
                             </div>
 
-                        </a>
-
+                        </a>`;
 
                     projectsContainer.insertAdjacentHTML(
                         "beforeend",
