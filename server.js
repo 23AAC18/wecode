@@ -120,7 +120,7 @@ app.get("/:roomName", (req, res) => {
 io.on("connection", (socket) => {
     socket.on("joinRoom", (roomName) => {
         socket.join(roomName);
-        console.log(`User joined room: ${roomName}`);
+        console.log(`User joined the room: ${roomName}`);
     });
 
     socket.on("codeChange", (data) => {
