@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     fetchAndDisplayInitialData();
 
+    // Problem Starts Here
     const updateCode = (newCode) => {
         editorChangeInProgress = true;
 
@@ -86,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
         socket.emit("codeChange", { roomName, newCode });
         update(codeRef, { [roomName]: newCode });
     });
+    // Problem Ends Here
 
     const runButton = document.getElementById("runButton");
     const outputDiv = document.getElementById("output");
