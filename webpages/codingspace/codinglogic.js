@@ -12,21 +12,17 @@ import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database
 import { db } from "../CurrentProjects/currentProjects.js";
 import { getCookie } from "../../common/getCookie.js";
 
-const username = getCookie("username");
-const userID = getCookie("userID");
-
-if (username) {
-    console.log("Username from codinglogic.js:", username);
-} else {
-    console.log("No username stored in the cookie");
-}
-const editor = ace.edit("editor");
-editor.setTheme("ace/theme/cobalt");
-editor.getSession().setMode("ace/mode/javascript");
-
-const codeRef = ref(db, "code");
-
 document.addEventListener("DOMContentLoaded", () => {
+    const username = getCookie("username");
+    const userID = getCookie("userID");
+
+    if (username) {
+        console.log("Username from codinglogic.js:", username);
+    } else {
+        console.log("No username stored in the cookie");
+    }
+
+    const codeRef = ref(db, "code");
     const socket = io();
     const codingSpace = document.getElementById("codingSpace");
     const roomName = window.location.pathname.slice(1);
@@ -38,8 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const editor = ace.edit("editor");
     editor.setTheme("ace/theme/twilight");
     editor.getSession().setMode("ace/mode/javascript");
-
-    const codeRef = ref(db, "code");
 
     const fetchAndDisplayInitialData = async () => {
         try {
