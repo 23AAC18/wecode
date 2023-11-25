@@ -1,15 +1,21 @@
+
+import { getCookie } from "../../cookie.js";
 import { db } from "../CurrentProjects/currentProjects.js";
 import {
     ref,
     set,
     get,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-import { getCookie } from "../../common/getCookie.js";
 
 const username = getCookie("username");
-const userID = getCookie("userID");
 
-const projectsRef = ref(db, `users/${userID}-${username}/projects`);
+if (username) {
+    console.log("Username from createproject.js:", username);
+} else {
+    console.log("No username stored in the cookie");
+}
+
+const projectsRef = ref(db, `users/${username}/projects`);
 
 document.addEventListener("DOMContentLoaded", () => {
     const createForm = document.getElementById("form-field");
@@ -45,3 +51,4 @@ document.addEventListener("DOMContentLoaded", () => {
         addProjectToDatabase(project);
     });
 });
+

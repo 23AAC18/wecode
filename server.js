@@ -10,7 +10,7 @@ const io = socketIo(server);
 const port = 3000;
 const fs = require("fs");
 const cors = require("cors");
-const { passport, getProfile } = require("./auth");
+const passport = require("./auth");
 const path = require("path");
 const ejs = require("ejs");
 
@@ -31,7 +31,6 @@ app.use(passport.session());
 // Serve static files from the root directory
 
 app.use(express.static(__dirname));
-app.use(express.static(path.join(__dirname, "webpages")));
 app.use(express.static(__dirname + "/webpages/CurrentProjects"));
 app.use(express.static(__dirname + "/webpages/codingspace"));
 app.use(
@@ -70,7 +69,6 @@ app.get(
 
 app.get("/home", isLoggedIn, (req, res) => {
     res.sendFile(__dirname + "/webpages/CurrentProjects/currentProjects.html");
-    console.log(getProfile().displayName);
 });
 
 app.get("/createProject", (req, res) => {
@@ -87,20 +85,8 @@ app.get("/logout", (req, res) => {
     console.log("User logged out");
 });
 
-app.get("/getProfile", (req, res) => {
-    try {
-        console.log(getProfile().displayName);
-        const profile = getProfile();
-        console.log(profile);
-        if (!profile) {
-            throw new Error("Profile not found");
-        }
-        console.log(profile);
-        res.json(profile);
-    } catch (error) {
-        console.error("Error fetching profile:", error);
-        res.status(500).json({ error: "Internal Server Error" });
-    }
+server.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
 
 app.get("/:roomName", (req, res) => {
@@ -120,7 +106,7 @@ app.get("/:roomName", (req, res) => {
 io.on("connection", (socket) => {
     socket.on("joinRoom", (roomName) => {
         socket.join(roomName);
-        console.log(`User joined the room: ${roomName}`);
+        console.log(`User joined room: ${roomName}`);
     });
 
     socket.on("codeChange", (data) => {
@@ -131,8 +117,4 @@ io.on("connection", (socket) => {
     socket.on("disconnect", () => {
         console.log("A user disconnected");
     });
-});
-
-server.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
 });

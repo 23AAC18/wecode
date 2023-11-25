@@ -1,3 +1,7 @@
+//This is the page connected to coding.html
+
+//Implement code such that logged in username is accessible on this page.
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
 import {
@@ -9,20 +13,24 @@ import {
     remove,
 } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
 import { get } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+
 import { db } from "../CurrentProjects/currentProjects.js";
-import { getCookie } from "../../common/getCookie.js";
+
+import { getCookie } from "/cookie.js";
+
+const username = getCookie("username");
+if (username) {
+    console.log("Username from codinglogic.js:", username);
+} else {
+    console.log("No username stored in the cookie");
+}
+const editor = ace.edit("editor");
+editor.setTheme("ace/theme/cobalt");
+editor.getSession().setMode("ace/mode/javascript");
+
+const codeRef = ref(db, "code");
 
 document.addEventListener("DOMContentLoaded", () => {
-    const username = getCookie("username");
-    const userID = getCookie("userID");
-
-    if (username) {
-        console.log("Username from codinglogic.js:", username);
-    } else {
-        console.log("No username stored in the cookie");
-    }
-
-    const codeRef = ref(db, "code");
     const socket = io();
     const codingSpace = document.getElementById("codingSpace");
     const roomName = window.location.pathname.slice(1);
@@ -34,6 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const editor = ace.edit("editor");
     editor.setTheme("ace/theme/twilight");
     editor.getSession().setMode("ace/mode/javascript");
+
+    const codeRef = ref(db, "code");
 
     const fetchAndDisplayInitialData = async () => {
         try {
@@ -49,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     fetchAndDisplayInitialData();
 
-    // Problem Starts Here
     const updateCode = (newCode) => {
         editorChangeInProgress = true;
 
@@ -87,7 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
         socket.emit("codeChange", { roomName, newCode });
         update(codeRef, { [roomName]: newCode });
     });
-    // Problem Ends Here
 
     const runButton = document.getElementById("runButton");
     const outputDiv = document.getElementById("output");
