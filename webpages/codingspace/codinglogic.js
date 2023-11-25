@@ -15,6 +15,8 @@ import { getCookie } from "../../common/getCookie.js";
 document.addEventListener("DOMContentLoaded", () => {
     const username = getCookie("username");
     const userID = getCookie("userID");
+    const bufferedChanges = [];
+    const updateInterval = 1000;
 
     if (username) {
         console.log("Username from codinglogic.js:", username);
@@ -68,10 +70,17 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!editorChangeInProgress) {
             const newCode = editor.getValue();
             updateCode(newCode);
+            bufferedChanges.push(newCode);
+        }
+    };
+
+    setInterval(() => {
+        if (bufferedChanges.length > 0) {
+            const newCode = bufferedChanges.pop();
             socket.emit("codeChange", { roomName, newCode });
             update(codeRef, { [roomName]: newCode });
         }
-    };
+    }, updateInterval);
 
     editor.getSession().on("change", onEditorChange);
 
