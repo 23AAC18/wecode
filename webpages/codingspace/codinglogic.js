@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Get the current cursor position
         const cursorPosition = editor.getCursorPosition();
 
-        codingSpace.value = newCode;
         editor.setValue(newCode, -1);
 
         // Restore the cursor position
@@ -82,11 +81,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    codingSpace.addEventListener("input", () => {
-        const newCode = codingSpace.value;
-        socket.emit("codeChange", { roomName, newCode });
-        update(codeRef, { [roomName]: newCode });
-    });
+    // editor.getSession().on("change", (event) => {
+    //     if (!editorChangeInProgress) {
+    //         const newCode = editor.getValue();
+    //         updateCode(newCode);
+    //         socket.emit("codeChange", { roomName, newCode });
+    //         update(codeRef, { [roomName]: newCode });
+    //     }
+    // });
+
     // Problem Ends Here
 
     const runButton = document.getElementById("runButton");
