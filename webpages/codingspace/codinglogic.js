@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             updateCode(newCode);
         }
     });
+    // Problem Ends Here
 
     const runButton = document.getElementById("runButton");
     const outputDiv = document.getElementById("output");
