@@ -56,8 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Get the current cursor position
         const cursorPosition = editor.getCursorPosition();
 
-        codingSpace.value = newCode;
-
         editor.setValue(newCode, -1);
 
         // Restore the cursor position
