@@ -92,12 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
         editor.setValue(newCode, -1);
 
         // Restore the cursor position
-        editor.moveCursorToPosition(cursorPosition);
+        editor.moveCursorToPosition(cursorPosition, false);
 
         // Emit the code change to other users
         socket.emit("codeChange", { roomName, newCode });
         update(codeRef, { [roomName]: newCode });
     });
+
     // Problem Ends Here
 
     const runButton = document.getElementById("runButton");
