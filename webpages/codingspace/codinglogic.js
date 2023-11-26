@@ -15,6 +15,7 @@ import { getCookie } from "../../common/getCookie.js";
 document.addEventListener("DOMContentLoaded", () => {
     const username = getCookie("username");
     const userID = getCookie("userID");
+    let codeBuffer = ""; // Buffer to store code changes
 
     if (username) {
         console.log("Username from codinglogic.js:", username);
@@ -68,8 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!editorChangeInProgress) {
             const newCode = editor.getValue();
             updateCode(newCode);
-            socket.emit("codeChange", { roomName, newCode });
-            update(codeRef, { [roomName]: newCode });
+
+            // Update the code buffer
+            codeBuffer = newCode;
         }
     };
 
@@ -80,6 +82,14 @@ document.addEventListener("DOMContentLoaded", () => {
             updateCode(newCode);
         }
     });
+
+    setInterval(() => {
+        if (codeBuffer !== "") {
+            socket.emit("codeChange", { roomName, newCode: codeBuffer });
+            update(codeRef, { [roomName]: codeBuffer });
+            codeBuffer = ""; // Clear the buffer after uploading
+        }
+    }, 5000); // 5000 milliseconds = 5 seconds
 
     // editor.getSession().on("change", (event) => {
     //     if (!editorChangeInProgress) {
