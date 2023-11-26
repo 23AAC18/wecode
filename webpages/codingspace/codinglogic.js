@@ -82,21 +82,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    codingSpace.addEventListener("input", () => {
-        const newCode = codingSpace.value;
-
-        // Save the current cursor position in the editor
-        const cursorPosition = editor.getCursorPosition();
-
-        // Set the new code in the editor
-        editor.setValue(newCode, -1);
-
-        // Restore the cursor position
-        editor.moveCursorToPosition(cursorPosition, false);
-
-        // Emit the code change to other users
-        socket.emit("codeChange", { roomName, newCode });
-        update(codeRef, { [roomName]: newCode });
+    editor.getSession().on("change", (event) => {
+        if (!editorChangeInProgress) {
+            const newCode = editor.getValue();
+            updateCode(newCode);
+            socket.emit("codeChange", { roomName, newCode });
+            update(codeRef, { [roomName]: newCode });
+        }
     });
 
     // Problem Ends Here
