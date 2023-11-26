@@ -84,6 +84,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     codingSpace.addEventListener("input", () => {
         const newCode = codingSpace.value;
+
+        // Save the current cursor position in the editor
+        const cursorPosition = editor.getCursorPosition();
+
+        // Set the new code in the editor
+        editor.setValue(newCode, -1);
+
+        // Restore the cursor position
+        editor.moveCursorToPosition(cursorPosition);
+
+        // Emit the code change to other users
         socket.emit("codeChange", { roomName, newCode });
         update(codeRef, { [roomName]: newCode });
     });
