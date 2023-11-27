@@ -70,7 +70,7 @@ async function fetchUserProfile() {
     }
 }
 
-// Helper function to get the value of a cookie by name
+//This function is redefined, get it from cookie.js directly
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
