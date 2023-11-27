@@ -69,14 +69,19 @@
     transform: translateY(0);
 }
 
-#info-bar {
-    height: 200px;
-    width: 90%;
+#landing-page-banner {
+    width: calc(1300px * 1.1);
+    height: calc(300px * 1.1);
     display: block;
     margin: auto;
     background-color: aquamarine;
     margin-top: 40px;
+    /* width: 1300px;
+    height: 300px; */
+    object-fit: contain;
+    border-radius: 16px;
 }
+
 .about-us {
     height: 300px;
     width: 90%;
