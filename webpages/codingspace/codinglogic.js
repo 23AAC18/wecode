@@ -50,30 +50,34 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchAndDisplayInitialData();
 
     // Problem Starts Here
-    const updateCode = (newCode, cursorPosition) => {
+    const updateCode = (newCode) => {
         editorChangeInProgress = true;
-        // Set the cursor position
-        editor.moveCursorToPosition(cursorPosition);
-        // Set the new code
+
+        // Get the current cursor position
+        const cursorPosition = editor.getCursorPosition();
+
         editor.setValue(newCode, -1);
+
+        // Restore the cursor position
+        editor.moveCursorToPosition(cursorPosition);
+
         editorChangeInProgress = false;
     };
+
     const onEditorChange = (event) => {
         if (!editorChangeInProgress) {
-            // Get the current cursor position
-            const cursorPosition = editor.getCursorPosition();
-            // Get the new code
             const newCode = editor.getValue();
-            // Emit the code change event with the cursor position and new code
-            socket.emit("codeChange", { roomName, newCode, cursorPosition });
-            // Update the code in the database
+            updateCode(newCode);
+            socket.emit("codeChange", { roomName, newCode });
             update(codeRef, { [roomName]: newCode });
         }
     };
+
     editor.getSession().on("change", onEditorChange);
-    socket.on("codeChange", ({ newCode, cursorPosition }) => {
+
+    socket.on("codeChange", (newCode) => {
         if (!editorChangeInProgress) {
-            updateCode(newCode, cursorPosition);
+            updateCode(newCode);
         }
     });
 
