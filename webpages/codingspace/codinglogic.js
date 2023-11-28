@@ -67,9 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const onEditorChange = (event) => {
         if (!editorChangeInProgress) {
             const newCode = editor.getValue();
-            updateCode(newCode);
-            socket.emit("codeChange", { roomName, newCode });
-            update(codeRef, { [roomName]: newCode });
+            const cursorPosition = editor.getCursorPosition();
+            const currentLine = editor.session.getLine(cursorPosition.row);
+            const updatedCode = editor.session.getDocument().getAllLines();
+            updatedCode[cursorPosition.row] = currentLine;
+            const updatedCodeString = updatedCode.join("\n");
+
+            updateCode(updatedCodeString);
+            socket.emit("codeChange", { roomName, newCode: updatedCodeString });
+            update(codeRef, { [roomName]: updatedCodeString });
         }
     };
 
