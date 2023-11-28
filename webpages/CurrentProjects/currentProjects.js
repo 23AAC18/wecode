@@ -36,34 +36,39 @@ async function fetchUserProfile() {
         const existingUsername = getCookie("username");
         const existingUserID = getCookie("userID");
 
-        if (existingUsername && existingUserID) {
-            // If cookies are present, use data from cookies
-            username = existingUsername;
-            userID = existingUserID;
-            console.log("Data from cookies:");
-            console.log(username);
-            console.log(userID);
+        if (document.URL.includes("/home")) {
+            console.log("Data from async FetchUserData");
+            if (existingUsername && existingUserID) {
+                // If cookies are present, use data from cookies
+                username = existingUsername;
+                userID = existingUserID;
+                console.log("Data from cookies:");
+                console.log(username);
+                console.log(userID);
 
-            // Call the function to display user projects
-            await displayUserProjects();
+                // Call the function to display user projects
+                await displayUserProjects();
+            } else {
+                // If cookies are not present, fetch profile data from the server
+                const response = await fetch("/getProfile");
+                const profile = await response.json();
+
+                console.log("Profile Data:", profile);
+                userProfile = profile;
+                username = userProfile.displayName;
+                userID = userProfile.id;
+                console.log(username);
+                console.log(userID);
+
+                // Set cookies with profile data
+                document.cookie = `username=${username}; path=/`;
+                document.cookie = `userID=${userID}; path=/`;
+
+                // Call the function to display user projects
+                await displayUserProjects();
+            }
         } else {
-            // If cookies are not present, fetch profile data from the server
-            const response = await fetch("/getProfile");
-            const profile = await response.json();
-
-            console.log("Profile Data:", profile);
-            userProfile = profile;
-            username = userProfile.displayName;
-            userID = userProfile.id;
-            console.log(username);
-            console.log(userID);
-
-            // Set cookies with profile data
-            document.cookie = `username=${username}; path=/`;
-            document.cookie = `userID=${userID}; path=/`;
-
-            // Call the function to display user projects
-            await displayUserProjects();
+            console.log("WHY THE FUCK IS THIS SCRIPT RUNNING");
         }
     } catch (error) {
         console.error("Error fetching profile:", error);
