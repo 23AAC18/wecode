@@ -29,6 +29,7 @@ const db = getDatabase();
 let userProfile;
 let username;
 let userID;
+let sayHelloTo;
 
 async function fetchUserProfile() {
     try {
