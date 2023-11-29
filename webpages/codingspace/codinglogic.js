@@ -64,16 +64,14 @@ document.addEventListener("DOMContentLoaded", () => {
         editorChangeInProgress = false;
     };
 
-    const onEditorChange = (event) => {
+    editor.getSession().on("change", (event) => {
         if (!editorChangeInProgress) {
             const newCode = editor.getValue();
             updateCode(newCode);
             socket.emit("codeChange", { roomName, newCode });
             update(codeRef, { [roomName]: newCode });
         }
-    };
-
-    editor.getSession().on("change", onEditorChange);
+    });
 
     socket.on("codeChange", (newCode) => {
         if (!editorChangeInProgress) {
