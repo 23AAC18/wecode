@@ -95,7 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Display the result in the output div
             if (consoleOutput) {
-                outputDiv.innerHTML = `Result: ${consoleOutput}`;
+                outputDiv.innerHTML = `Result:
+                    ${consoleOutput.replace(/\n/g, "<br>")}`;
             } else {
                 outputDiv.innerHTML = "";
             }
