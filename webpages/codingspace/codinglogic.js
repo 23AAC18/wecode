@@ -78,16 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
             updateCode(newCode);
         }
     });
-
-    // editor.getSession().on("change", (event) => {
-    //     if (!editorChangeInProgress) {
-    //         const newCode = editor.getValue();
-    //         updateCode(newCode);
-    //         socket.emit("codeChange", { roomName, newCode });
-    //         update(codeRef, { [roomName]: newCode });
-    //     }
-    // });
-
     // Problem Ends Here
 
     const runButton = document.getElementById("runButton");
