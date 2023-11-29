@@ -29,6 +29,7 @@ const db = getDatabase();
 let userProfile;
 let username;
 let userID;
+let sayHelloTo;
 
 async function fetchUserProfile() {
     try {
@@ -81,6 +82,18 @@ function getCookie(name) {
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(";").shift();
 }
+
+// async function sayHello() {
+//     if (username) {
+//         sayHelloTo = username;
+//     } else {
+//         sayHelloTo = "Rando";
+//     }
+
+//     document
+//         .querySelector("#say-hello")
+//         .insertAdjacentHTML("beforeend", `<p>Hello, ${sayHelloTo}</p>`);
+// }
 
 async function displayUserProjects() {
     const projectsContainer = document.getElementById("projects-container");
