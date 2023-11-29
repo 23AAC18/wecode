@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .then(() => {
                 console.log("Project data added to the database");
+                location.href = "/home";
             })
             .catch((error) => {
                 console.error(

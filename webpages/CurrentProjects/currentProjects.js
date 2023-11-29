@@ -29,33 +29,58 @@ const db = getDatabase();
 let userProfile;
 let username;
 let userID;
+let sayHelloTo;
 
 async function fetchUserProfile() {
     try {
-        const response = await fetch("/getProfile");
-        const profile = await response.json();
-
-        console.log("Profile Data:", profile);
-        userProfile = profile;
-        username = userProfile.displayName;
-        userID = userProfile.id;
-        console.log(username);
-        console.log(userID);
-
-        document.cookie = `username=${username}; path=/`;
-        document.cookie = `userID=${userID}; path=/`;
+        // Check if cookies are present
+        const existingUsername = getCookie("username");
+        const existingUserID = getCookie("userID");
 
         if (document.URL.includes("/home")) {
             console.log("Data from async FetchUserData");
-            console.log(username);
-            console.log(userID);
-            await displayUserProjects();
+            if (existingUsername && existingUserID) {
+                // If cookies are present, use data from cookies
+                username = existingUsername;
+                userID = existingUserID;
+                console.log("Data from cookies:");
+                console.log(username);
+                console.log(userID);
+
+                // Call the function to display user projects
+                await displayUserProjects();
+            } else {
+                // If cookies are not present, fetch profile data from the server
+                const response = await fetch("/getProfile");
+                const profile = await response.json();
+
+                console.log("Profile Data:", profile);
+                userProfile = profile;
+                username = userProfile.displayName;
+                userID = userProfile.id;
+                console.log(username);
+                console.log(userID);
+
+                // Set cookies with profile data
+                document.cookie = `username=${username}; path=/`;
+                document.cookie = `userID=${userID}; path=/`;
+
+                // Call the function to display user projects
+                await displayUserProjects();
+            }
         } else {
-            console.log("WHY THE FUCK IS THIS SCRIPT RUNNING?????");
+            console.log("WHY THE FUCK IS THIS SCRIPT RUNNING");
         }
     } catch (error) {
         console.error("Error fetching profile:", error);
     }
+}
+
+//This function is redefined, get it from cookie.js directly
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
 }
 
 async function displayUserProjects() {
