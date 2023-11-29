@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const socket = io();
     const codingSpace = document.getElementById("codingSpace");
     const roomName = window.location.pathname.slice(1);
-    let editorChangeInProgress = false;
 
     socket.emit("joinRoom", roomName);
 
@@ -51,8 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Problem Starts Here
     const updateCode = (newCode) => {
-        editorChangeInProgress = true;
-
         // Get the current cursor position
         const cursorPosition = editor.getCursorPosition();
 
@@ -60,25 +57,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Restore the cursor position
         editor.moveCursorToPosition(cursorPosition);
-
-        editorChangeInProgress = false;
     };
 
-    const onEditorChange = (event) => {
-        if (!editorChangeInProgress) {
-            const newCode = editor.getValue();
-            updateCode(newCode);
-            socket.emit("codeChange", { roomName, newCode });
-            update(codeRef, { [roomName]: newCode });
-        }
-    };
-
-    editor.getSession().on("change", onEditorChange);
+    editor.getSession().on("change", function (event) {
+        const newCode = editor.getValue();
+        updateCode(newCode);
+        socket.emit("codeChange", { roomName, newCode });
+        update(codeRef, { [roomName]: newCode });
+    });
 
     socket.on("codeChange", (newCode) => {
-        if (!editorChangeInProgress) {
-            updateCode(newCode);
-        }
+        updateCode(newCode);
     });
 
     // editor.getSession().on("change", (event) => {
