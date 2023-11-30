@@ -93,12 +93,12 @@ async function displayUserProjects() {
         console.log(username);
         console.log(userID);
         sayHelloDiv.innerHTML = `
-        <div style="display: flex; align-items: center; padding-left:80%;">
+        <div style="display: flex; align-items: center;">
             <img src="/Assets/images/profile.png" 
                 alt="Profile Image" class="profile-image" 
                 style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;"
             >
-            <p style="white-space: nowrap;font-size: larger;padding-top: 50%;">
+            <p style="white-space: nowrap;font-size: larger;padding-top: 15px;">
                 ${username}
             </p>
         </div>
