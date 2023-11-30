@@ -10,7 +10,7 @@
 }
 
 #header-text {
-    margin: 10px 0px 0px 50px;
+    margin: 0px 0px 0px 50px;
     font-family: "Dosis", sans-serif;
     font-size: 40px;
 }
@@ -119,8 +119,10 @@
 #header-content {
     display: flex;
     align-items: center;
+    height: 100%;
 }
 
 #say-hello {
     color: #ffffff;
+    padding-left: 850px;
 }
