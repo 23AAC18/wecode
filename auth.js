@@ -11,7 +11,7 @@ passport.use(
             clientSecret: "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",
             callbackURL:
                 "https://wecode-mjrg.onrender.com/auth/google/callback",
-            //"http://localhost:3000/auth/google/callback",
+            // "http://localhost:3000/auth/google/callback",
             profileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
         },
         (accessToken, refreshToken, profile, done) => {

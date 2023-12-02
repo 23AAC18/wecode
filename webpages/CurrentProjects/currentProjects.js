@@ -82,6 +82,10 @@ function getCookie(name) {
     if (parts.length === 2) return parts.pop().split(";").shift();
 }
 
+function getRandomImageNumber() {
+    return Math.floor(Math.random() * 12) + 1;
+}
+
 async function displayUserProjects() {
     const projectsContainer = document.getElementById("projects-container");
     const sayHelloDiv = document.getElementById("say-hello"); // Add this line
@@ -122,7 +126,7 @@ async function displayUserProjects() {
                             <div class="card mb-3" style="max-width: 540px">
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
-                                        <img src="/Assets/images/demo-landscape.jpg" class="card-img holding-image" alt="...">
+                                        <img src="/Assets/images/projects/project-${getRandomImageNumber()}.jpg" class="card-img holding-image" alt="...">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
