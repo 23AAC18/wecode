@@ -29,7 +29,6 @@ const db = getDatabase();
 let userProfile;
 let username;
 let userID;
-let sayHelloTo;
 
 async function fetchUserProfile() {
     try {
@@ -85,13 +84,25 @@ function getCookie(name) {
 
 async function displayUserProjects() {
     const projectsContainer = document.getElementById("projects-container");
+    const sayHelloDiv = document.getElementById("say-hello"); // Add this line
+
     console.log(projectsContainer);
 
     if (username) {
         console.log("Data from async DisplayUserProjects");
         console.log(username);
         console.log(userID);
-
+        sayHelloDiv.innerHTML = `
+        <div style="display: flex; align-items: center;">
+            <img src="/Assets/images/profile.png" 
+                alt="Profile Image" class="profile-image" 
+                style="width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;"
+            >
+            <p style="white-space: nowrap;font-size: larger;padding-top: 15px;">
+                ${username}
+            </p>
+        </div>
+        `;
         try {
             const userProjectsRef = ref(db, `users/${userID}-${username}`);
             const userProjectsSnapshot = await get(userProjectsRef);
@@ -106,29 +117,24 @@ async function displayUserProjects() {
                     const projectDescription = valuePair.projectSummary;
 
                     const projectCardHTML = `
+                    <div id="${projectName}" class="project-element">
                         <a onclick="window.location.href= '${userID}-${projectName}'">
-                            <div class="project-element" id="${projectName}">
-                                <div class="card mb-3" style="max-width: 540px">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-4">
-                                                <img
-                                                    src="/Assets/images/demo-landscape.jpg"
-                                                    class="card-img holding-image"
-                                                    alt="..."
-                                                />
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
-                                                <h5 class="card-title">${projectName}</h5>
-                                                <p class="card-text">${projectDescription}</p>
-                                            </div>
-
+                            <div class="card mb-3" style="max-width: 540px">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        <img src="/Assets/images/demo-landscape.jpg" class="card-img holding-image" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${projectName}</h5>
+                                            <p class="card-text">${projectDescription}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                        </a>`;
+                        </a>
+                    </div>
+                    `;
 
                     projectsContainer.insertAdjacentHTML(
                         "beforeend",
